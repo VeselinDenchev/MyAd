@@ -1,24 +1,33 @@
+import { useEffect } from "react";
+import { Helmet } from "react-helmet";
+
 import logo from './logo.svg';
 import './App.css';
 
+import Header from "./components/header/Header";
+import Main from "./components/main/Main";
+import Footer from "./components/footer/Footer";
+import BackToTop from "./components/back-to-top/BackToTop";
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+        <Helmet>
+            <script src="https://code.jquery.com/jquery-3.4.1.min.js" type="text/javascript" defer></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js" type="text/javascript" defer></script>
+            <script src="lib/easing/easing.min.js" type="text/javascript" defer></script>
+            <script src="lib/slick/slick.min.js" type="text/javascript" defer></script>
+            
+            <script src="js/main.js" type="text/javascript" defer></script>
+        </Helmet>
+
+        <Header />
+        <Main />
+        <Footer />
+
+        <BackToTop />
+    </>    
+        
   );
 }
 
