@@ -1,3 +1,4 @@
+import Slider from "react-slick";
 import ProductItem from "../product-item/ProductItem";
 
 export default function FeaturedProduct() {
@@ -10,17 +11,45 @@ export default function FeaturedProduct() {
         'img/product-5.jpg',
     ];
 
+    const featuredItemSliderSettings = {
+        autoplay: true,
+        infinite: true,
+        dots: false,
+        slidesToShow: 4,
+        slidesToScroll: 1,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: {
+                    slidesToShow: 3,
+                }
+            },
+            {
+                breakpoint: 768,
+                settings: {
+                    slidesToShow: 2,
+                }
+            },
+            {
+                breakpoint: 576,
+                settings: {
+                    slidesToShow: 1,
+                }
+            },
+        ]
+    };
+
     return (
         <div className="featured-product product">
             <div className="container-fluid">
                 <div className="section-header">
                     <h1>Featured Product</h1>
                 </div>
-                <div className="row align-items-center product-slider product-slider-4">
-                    {productImages.map(imageSource =>
-                        <ProductItem key={imageSource} image={imageSource} />
-                    )}
-                </div>
+                <Slider {...featuredItemSliderSettings}>
+                        {productImages.map(imageSource =>
+                            <ProductItem key={imageSource} image={imageSource} />
+                        )}
+                </Slider>
             </div>
         </div>
     );

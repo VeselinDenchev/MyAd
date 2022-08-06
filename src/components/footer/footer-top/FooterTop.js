@@ -4,14 +4,6 @@ import FooterWidget from "./footer-widget/FooterWidget";
 import InfoItem from "./footer-widget/info-item/InfoItem";
 import Payment from "./payment/Payment";
 
-const footerWidgetHeadings = 
-[
-    'Get in Touch',
-    'Follow Us',
-    'Company Info',
-    'Purchase Info'
-];
-
 const contactInfoItems = 
 [
     {iconClassName: 'fa fa-map-marker', contactData: '123 E Store, Los Angeles, USA'},
@@ -44,36 +36,36 @@ const purchaseInfoItems =
 
 export default function Footer() {
     return (
-        <div class="footer">
-            <div class="container-fluid">
-                <div class="row">
-                    <FooterWidget heading={footerWidgetHeadings[0]}>
-                        <div class="contact-info">
+        <div className="footer">
+            <div className="container-fluid">
+                <div className="row">
+                    <FooterWidget heading='Get in Touch'>
+                        <div className="contact-info">
                             {contactInfoItems.map(contact =>
-                                <ContactInfoItem {...contact} />
+                                <ContactInfoItem key={contact.contactData} {...contact} />
                             )}
                         </div>
                     </FooterWidget>
-                    <FooterWidget heading={footerWidgetHeadings[1]}>
-                        <div class="contact-info">
-                            <div class="social">
+                    <FooterWidget heading='Follow Us'>
+                        <div className="contact-info">
+                            <div className="social">
                                 {socialMediaIconsClassNames.map(socialMedia =>
-                                    <SocialMediaItem iconClassName={socialMedia} />
+                                    <SocialMediaItem key={socialMedia} iconClassName={socialMedia} />
                                 )}
                             </div>
                         </div>
                     </FooterWidget>
-                    <FooterWidget heading={footerWidgetHeadings[2]}>
+                    <FooterWidget heading='Company Info'>
                         <ul>
                             {companyInfoItems.map(companyInfoItem =>
-                                <InfoItem item={companyInfoItem} />
+                                <InfoItem key={companyInfoItem} item={companyInfoItem} />
                             )}
                         </ul>
                     </FooterWidget>
-                    <FooterWidget heading={footerWidgetHeadings[3]}>
+                    <FooterWidget heading='Purchase Info'>
                         <ul>
                             {purchaseInfoItems.map(purchaseInfoItem =>
-                                <InfoItem item={purchaseInfoItem} />
+                                <InfoItem key={purchaseInfoItem} item={purchaseInfoItem} />
                             )}
                         </ul>
                     </FooterWidget>

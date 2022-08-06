@@ -1,10 +1,12 @@
+import { NavLink } from 'react-router-dom';
+
 import DropdownMenu from "../dropdown-menu/DropdownMenu";
 
 export default function MainNav({dropdownItems}) {
     return (
         <div className="navbar-nav mr-auto">
-            <a href="index.html" className="nav-item nav-link active">Home</a>
-            <a href="product-list.html" className="nav-item nav-link">Products</a>
+            <NavLink to="/" className='nav-item nav-link'>Home</NavLink>
+            <NavLink to="/products" className='nav-item nav-link'>Products</NavLink>
             <a href="product-detail.html" className="nav-item nav-link">Product Detail</a>
             <a href="cart.html" className="nav-item nav-link">Cart</a>
             <a href="checkout.html" className="nav-item nav-link">Checkout</a>

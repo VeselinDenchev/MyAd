@@ -7,7 +7,7 @@ import FeaturedProduct from '../product/featured-product/FeaturedProduct';
 import RecentProduct from '../product/recent-product/RecentProduct';
 import Review from './review/Review';
 
-export default function Main() {
+export default function Home() {
     return (
         <main>
             <MainSlider />
@@ -17,7 +17,6 @@ export default function Main() {
             <CallToAction />
             <FeaturedProduct />
             <RecentProduct />
-            <Review />
         </main>
     );
 }

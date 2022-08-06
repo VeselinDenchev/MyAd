@@ -19,7 +19,7 @@ export default function Payment() {
     return (
         <div className="row payment align-items-center">
             {paymentItems.map(item => 
-                <PaymentItem paymentClassName={item.className} heading={item.heading}>
+                <PaymentItem key={item.heading} paymentClassName={item.className} heading={item.heading}>
                     {item.images}
                 </PaymentItem>
             )}
