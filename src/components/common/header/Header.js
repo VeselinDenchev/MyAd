@@ -6,6 +6,8 @@ import BottomBar from "./bottom-bar/BottomBar";
 import NavBar from "./nav-bar/NavBar";
 import TopBar from "./top-bar/TopBar";
 
+import formatLinkDestinationName from '../../../utils/formatLinkDestinationName';
+
 export default function Header() {
     let location = useLocation();
     const [links, setLinks] = useState([]);
@@ -43,17 +45,3 @@ export default function Header() {
         </header>
     );
 }
-
-function formatLinkDestinationName(name) {
-    const nameWords = name.split('-');
-    
-    for (let index = 0; index < nameWords.length; index++) {
-        nameWords[index] = toUpperFirstLetter(nameWords[index]);
-    }
-
-    const formattedName = nameWords.join(' ');
-
-    return formattedName;
-}
-
-const toUpperFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);
