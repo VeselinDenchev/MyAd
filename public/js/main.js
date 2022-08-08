@@ -34,13 +34,13 @@
     
     
     // Header slider
-    $('.header-slider').slick({
+    /*$('.header-slider').slick({
         autoplay: true,
         dots: true,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1
-    });
+    });*/
     
     
     // Product Slider 4 Column
@@ -109,7 +109,7 @@
     });
     
     
-    // Product Detail Slider
+    /*// Product Detail Slider
     $('.product-slider-single').slick({
         infinite: true,
         autoplay: true,
@@ -126,7 +126,7 @@
         centerMode: true,
         focusOnSelect: true,
         asNavFor: '.product-slider-single'
-    });
+    });*/
     
     
     // Brand Slider
@@ -190,17 +190,17 @@
     });
     
     
-    // Widget slider
+    /*// Widget slider
     $('.sidebar-slider').slick({
         autoplay: true,
         dots: false,
         infinite: true,
         slidesToShow: 1,
         slidesToScroll: 1
-    });
+    });*/
     
     
-    // Quantity
+    /*// Quantity
     $('.qty button').on('click', function () {
         var $button = $(this);
         var oldValue = $button.parent().find('input').val();
@@ -214,7 +214,7 @@
             }
         }
         $button.parent().find('input').val(newVal);
-    });
+    });*/
     
     
     // Shipping address show hide

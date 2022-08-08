@@ -6,11 +6,12 @@ import $ from 'jquery';
 import logo from './logo.svg';
 import './App.css';
 
-import Header from "./components/header/Header";
-import Home from "./components/home/Home";
-import Footer from "./components/footer/Footer";
-import BackToTop from "./components/back-to-top/BackToTop";
-import Products from "./components/products/Products";
+import Header from "./components/common/header/Header";
+import Home from "./components/pages/home/Home";
+import Footer from "./components/common/footer/Footer";
+import BackToTop from "./components/common/back-to-top/BackToTop";
+import Products from "./components/pages/products/Products";
+import ProductDetail from "./components/pages/product-detail/ProductDetail";
 
 function App() {
     let location = useLocation();
@@ -28,36 +29,40 @@ function App() {
     easingScript.src = "%PUBLIC_URL%/lib/easing/easing.min.js";
     document.body.appendChild(easingScript);
 
-    const slickScript = document.createElement('slickScript');
+    /*const slickScript = document.createElement('slickScript');
     slickScript.src = "%PUBLIC_URL%/lib/slick/slick.min.js";
-    document.body.appendChild(slickScript);
+    document.body.appendChild(slickScript);*/
 
     const mainScript = document.createElement('mainScript');
     mainScript.src = "%PUBLIC_URL%/js/main.js";
     mainScript.type = 'text/javascript';
     document.body.appendChild(mainScript);
 
+    console.log(location.pathname);
+
 
     return () => {
       document.body.removeChild(jqueryScript);
       document.body.removeChild(bootstrapScript);
       document.body.removeChild(easingScript);
-      document.body.removeChild(slickScript);
+      //document.body.removeChild(slickScript);
       document.body.removeChild(mainScript);
+
     }
   }, [location.pathname]);
 
   return (
     <>
-        {/* <Helmet>
+        <Helmet>
             <script src="js/main.js" type="text/javascript" defer></script>
-        </Helmet> */}
+        </Helmet>
 
         <Header />
 
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route index path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
+          <Route path="/product-detail" element={<ProductDetail />} />
         </Routes>
 
         <Footer />
