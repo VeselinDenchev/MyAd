@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import InputText from "./input-text/InputText";
+import InputText from "../../../input-text/InputText";
 
 export default function AddressForm({setCheckoutForm, outerAddressForm}) {
     const [addressForm, setAddressForm] = useState({
@@ -24,33 +24,32 @@ export default function AddressForm({setCheckoutForm, outerAddressForm}) {
             }
         }
         console.log(addressFormKeys);
-    }, [addressForm])
+    }, [addressForm, outerAddressForm, setCheckoutForm])
 
+    
+    const inputChangeHandler = (event) => setAddressForm({...addressForm, [event.target.name]: event.target.value});
 
-    let inputTexts = 
+    const inputTexts = 
     [
-        {name: 'firstName', label: 'First Name', value: addressForm.firstName},
-        {name: 'lastName', label: 'Last Name', value: addressForm.lastName},
-        {name: 'email', label: 'E-mail', value: addressForm.email},
-        {name: 'mobileNumber', label: 'Mobile No', value: addressForm.mobileNumber},
-        {name: 'address', label: 'Address', value: addressForm.address},
-        {name: 'city', label: 'City', value: addressForm.city},
-        {name: 'state', label: 'State', value: addressForm.state},
-        {name: 'zipCode', label: 'ZIP Code', value: addressForm.zipCode},
+        {name: 'firstName',  label: 'First Name', value: addressForm.firstName, isWide: false},
+        {name: 'lastName', label: 'Last Name', value: addressForm.lastName, isWide: false},
+        {name: 'email', label: 'E-mail', value: addressForm.email, isWide: false},
+        {name: 'mobileNumber', label: 'Mobile No', value: addressForm.mobileNumber, isWide: false},
+        {name: 'address', label: 'Address', value: addressForm.address, isWide: true},
+        {name: 'city', label: 'City', value: addressForm.city, isWide: false},
+        {name: 'state', label: 'State', value: addressForm.state, isWide: false},
+        {name: 'zipCode', label: 'ZIP Code', value: addressForm.zipCode, isWide: false}
     ];
 
-    const inputChangeHandler = (event) => {
-        setAddressForm({...addressForm, [event.target.name]: event.target.value});
-    }
 
     return (
         <>
-            <InputText {...{...inputTexts[0], inputChangeHandler: inputChangeHandler, isWide: false}} />
-            <InputText {...{...inputTexts[1], inputChangeHandler: inputChangeHandler, isWide: false}} />
-            <InputText {...{...inputTexts[2], inputChangeHandler: inputChangeHandler, isWide: false}} />
-            <InputText {...{...inputTexts[3], inputChangeHandler: inputChangeHandler, isWide: false}} />
-            <InputText {...{...inputTexts[4], inputChangeHandler: inputChangeHandler, isWide: true}} />
-            <InputText {...{...inputTexts[5], inputChangeHandler: inputChangeHandler, isWide: false}} />
+            <InputText {...{...inputTexts[0], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...{...inputTexts[1], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...{...inputTexts[2], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...{...inputTexts[3], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...{...inputTexts[4], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...{...inputTexts[5], type: 'text', inputChangeHandler: inputChangeHandler}} />
             <div className="col-md-6">
                 <label htmlFor="country">Country</label>
                 <select className="custom-select" id="country" name="country" value={addressForm.country} onChange={inputChangeHandler}>
@@ -60,8 +59,8 @@ export default function AddressForm({setCheckoutForm, outerAddressForm}) {
                     <option value="ALG">Algeria</option>
                 </select>
             </div>
-            <InputText {...{...inputTexts[6], inputChangeHandler: inputChangeHandler, isWide: false}} />
-            <InputText {...{...inputTexts[7], inputChangeHandler: inputChangeHandler, isWide: false}} />
+            <InputText {...{...inputTexts[6], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...{...inputTexts[7], type: 'text', inputChangeHandler: inputChangeHandler}} />
         </>
     );
 }

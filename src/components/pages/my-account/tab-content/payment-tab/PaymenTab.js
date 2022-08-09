@@ -1,0 +1,10 @@
+export default function PaymentTab() {
+    return (
+        <div className="tab-pane fade" id="payment-tab" role="tabpanel" aria-labelledby="payment-nav">
+            <h4>Payment Method</h4>
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. In condimentum quam ac mi viverra dictum. In efficitur ipsum diam, at dignissim lorem tempor in. Vivamus tempor hendrerit finibus. Nulla tristique viverra nisl, sit amet bibendum ante suscipit non. Praesent in faucibus tellus, sed gravida lacus. Vivamus eu diam eros. Aliquam et sapien eget arcu rhoncus scelerisque.
+            </p> 
+        </div>
+    );
+}

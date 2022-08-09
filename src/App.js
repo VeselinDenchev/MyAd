@@ -1,7 +1,6 @@
 import { useLayoutEffect, useState } from "react";
 import { Helmet } from "react-helmet";
 import { Routes, Route, useLocation } from 'react-router-dom';
-import $ from 'jquery';
 
 import logo from './logo.svg';
 import './App.css';
@@ -14,6 +13,7 @@ import Products from "./components/pages/products/Products";
 import ProductDetail from "./components/pages/product-detail/ProductDetail";
 import Cart from "./components/pages/cart/Cart";
 import Checkout from "./components/pages/checkout/Checkout";
+import MyAccount from "./components/pages/my-account/MyAccount";
 
 function App() {
     let location = useLocation();
@@ -67,6 +67,7 @@ function App() {
           <Route path="/product-detail" element={<ProductDetail />} />
           <Route path="/cart" element={<Cart />} />
           <Route path="/checkout" element={<Checkout />} />
+          <Route path="/my-account" element={<MyAccount />} />
         </Routes>
 
         <Footer />
