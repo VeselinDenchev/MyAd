@@ -3,7 +3,7 @@ import Rating from "../../../product/rating/Rating";
 import Action from "./action/Action";
 import Color from "./color/Color";
 import Price from "./price/Price";
-import Quantity from "./quantity/Quantity";
+import Quantity from "../../../product/quantity/Quantity";
 import Size from "./size/Size";
 
 export default function ProductContent() {
@@ -22,7 +22,10 @@ export default function ProductContent() {
                 <div className="title"><h2>Product Name</h2></div>
                 <Rating />
                 <Price />
-                <Quantity />
+                <div className="quantity">
+                    <h4>Quantity:</h4>
+                    <Quantity />
+                </div>
                 <Size setSize={setProductVariant} />
                 <Color setColor={setProductVariant} />
                 <Action />

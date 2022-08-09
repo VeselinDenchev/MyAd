@@ -36,13 +36,10 @@ export default function Quantity() {
     }
 
     return (
-        <div className="quantity" onBlur={quantityCheckOnBlurHandler}>
-            <h4>Quantity:</h4>
-            <div className="qty">
-                <button className="btn-minus" onClick={() => quantityChangeHandler(QuantityChangeTypes.Decrement)}><i className="fa fa-minus"></i></button>
-                <input type="text" onChange={inputQuantityChangeHandler} value={quantity} />
-                <button className="btn-plus" onClick={() => quantityChangeHandler(QuantityChangeTypes.Increment)}><i className="fa fa-plus"></i></button>
-            </div>
+        <div className="qty" onBlur={quantityCheckOnBlurHandler}>
+            <button className="btn-minus" onClick={() => quantityChangeHandler(QuantityChangeTypes.Decrement)}><i className="fa fa-minus"></i></button>
+            <input type="text" onChange={inputQuantityChangeHandler} value={quantity} />
+            <button className="btn-plus" onClick={() => quantityChangeHandler(QuantityChangeTypes.Increment)}><i className="fa fa-plus"></i></button>
         </div>
     );
 }

@@ -8,11 +8,11 @@ export default function MainNav({dropdownItems}) {
             <NavLink to="/" className='nav-item nav-link'>Home</NavLink>
             <NavLink to="/products" className='nav-item nav-link'>Products</NavLink>
             <NavLink to="/product-detail" className="nav-item nav-link">Product Detail</NavLink>
-            <a href="cart.html" className="nav-item nav-link">Cart</a>
-            <a href="checkout.html" className="nav-item nav-link">Checkout</a>
-            <a href="my-account.html" className="nav-item nav-link">My Account</a>
+            <NavLink to="/cart" className="nav-item nav-link">Cart</NavLink>
+            <NavLink to="/checkout" className="nav-item nav-link">Checkout</NavLink>
+            <NavLink to="my-account.html" className="nav-item nav-link">My Account</NavLink>
             <div className="nav-item dropdown">
-                <a href="#" className="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</a>
+                <NavLink to="#" className="nav-link dropdown-toggle" data-toggle="dropdown">More Pages</NavLink>
                 <DropdownMenu items={dropdownItems} />
             </div>
         </div>

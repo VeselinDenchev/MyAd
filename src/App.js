@@ -12,6 +12,8 @@ import Footer from "./components/common/footer/Footer";
 import BackToTop from "./components/common/back-to-top/BackToTop";
 import Products from "./components/pages/products/Products";
 import ProductDetail from "./components/pages/product-detail/ProductDetail";
+import Cart from "./components/pages/cart/Cart";
+import Checkout from "./components/pages/checkout/Checkout";
 
 function App() {
     let location = useLocation();
@@ -63,6 +65,8 @@ function App() {
           <Route index path="/" element={<Home />} />
           <Route path="/products" element={<Products />} />
           <Route path="/product-detail" element={<ProductDetail />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
 
         <Footer />
