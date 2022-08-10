@@ -1,3 +1,5 @@
+import toUpperFirstLetter from "./toUpperFirstLetter";
+
 export default function formatLinkDestinationName(name) {
     const nameWords = name.split('-');
     
@@ -9,5 +11,3 @@ export default function formatLinkDestinationName(name) {
 
     return formattedName;
 }
-
-const toUpperFirstLetter = (string) => string.charAt(0).toUpperCase() + string.slice(1);

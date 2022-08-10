@@ -16,6 +16,7 @@ import Checkout from "./components/pages/checkout/Checkout";
 import MyAccount from "./components/pages/my-account/MyAccount";
 import Wishlist from "./components/pages/wishlist/Wishlist";
 import Login from "./components/pages/login/Login";
+import Contact from "./components/pages/contact/Contact";
 
 function App() {
     let location = useLocation();
@@ -75,6 +76,7 @@ function App() {
           <Route path="/my-account" element={<MyAccount />} />
           <Route path="/wishlist" element={<Wishlist />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/contact" element={<Contact />} />
         </Routes>
 
         <Footer />
