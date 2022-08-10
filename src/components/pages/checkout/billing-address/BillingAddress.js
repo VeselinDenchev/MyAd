@@ -1,5 +1,5 @@
 import AddressForm from "../address-form/AddressForm";
-import InputCheckbox from "./input-checkbox/InputCheckbox";
+import InputCheckbox from "../../../inputs/input-checkbox/InputCheckbox";
 
 export default function BillingAddress({checkoutForm, setCheckoutForm}) {
     const checkboxes = 
@@ -14,7 +14,7 @@ export default function BillingAddress({checkoutForm, setCheckoutForm}) {
             <div className="row">
                 <AddressForm setCheckoutForm={setCheckoutForm} outerAddressForm={checkoutForm.billingAddress} />
                 {checkboxes.map(checkbox =>
-                    <InputCheckbox key={checkbox.name} checkoutForm={checkoutForm} setCheckoutForm={setCheckoutForm} checkbox={checkbox} />
+                    <InputCheckbox key={checkbox.name} form={checkoutForm} setForm={setCheckoutForm} checkbox={checkbox} />
                 )}
             </div>
         </div>

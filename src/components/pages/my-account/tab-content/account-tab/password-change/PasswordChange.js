@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import InputText from "../../../../../input-text/InputText";
+import InputText from "../../../../../inputs/input-text/InputText";
 import UpdateButton from "../update-button/UpdateButton";
 
 export default function PasswordChange() {
@@ -24,7 +24,7 @@ export default function PasswordChange() {
             <h4>Password change</h4>
             <div className="row">
                 {passwords.map(password =>
-                    <InputText key={password.name} {...{...password, type: 'password', inputChangeHandler: inputChangeHandler}} />
+                    <InputText key={password.name} {...password} type='password' inputChangeHandler={inputChangeHandler} />
                 )}
                 <UpdateButton text="Save Changes" />
             </div>

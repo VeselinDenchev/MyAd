@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import InputText from "../../../input-text/InputText";
+import InputText from "../../../inputs/input-text/InputText";
 
 export default function AddressForm({setCheckoutForm, outerAddressForm}) {
     const [addressForm, setAddressForm] = useState({
@@ -44,12 +44,12 @@ export default function AddressForm({setCheckoutForm, outerAddressForm}) {
 
     return (
         <>
-            <InputText {...{...inputTexts[0], type: 'text', inputChangeHandler: inputChangeHandler}} />
-            <InputText {...{...inputTexts[1], type: 'text', inputChangeHandler: inputChangeHandler}} />
-            <InputText {...{...inputTexts[2], type: 'text', inputChangeHandler: inputChangeHandler}} />
-            <InputText {...{...inputTexts[3], type: 'text', inputChangeHandler: inputChangeHandler}} />
-            <InputText {...{...inputTexts[4], type: 'text', inputChangeHandler: inputChangeHandler}} />
-            <InputText {...{...inputTexts[5], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...inputTexts[0]} type='text' inputChangeHandler={inputChangeHandler} />
+            <InputText {...inputTexts[1]} type='text' inputChangeHandler={inputChangeHandler} />
+            <InputText {...inputTexts[2]} type='text' inputChangeHandler={inputChangeHandler} />
+            <InputText {...inputTexts[3]} type='text' inputChangeHandler={inputChangeHandler} />
+            <InputText {...inputTexts[4]} type='text' inputChangeHandler={inputChangeHandler} />
+            <InputText {...inputTexts[5]} type='text' inputChangeHandler={inputChangeHandler} />
             <div className="col-md-6">
                 <label htmlFor="country">Country</label>
                 <select className="custom-select" id="country" name="country" value={addressForm.country} onChange={inputChangeHandler}>
@@ -59,8 +59,8 @@ export default function AddressForm({setCheckoutForm, outerAddressForm}) {
                     <option value="ALG">Algeria</option>
                 </select>
             </div>
-            <InputText {...{...inputTexts[6], type: 'text', inputChangeHandler: inputChangeHandler}} />
-            <InputText {...{...inputTexts[7], type: 'text', inputChangeHandler: inputChangeHandler}} />
+            <InputText {...inputTexts[6]} type='text' inputChangeHandler={inputChangeHandler} />
+            <InputText {...inputTexts[7]} type='text' inputChangeHandler={inputChangeHandler} />
         </>
     );
 }

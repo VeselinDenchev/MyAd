@@ -25,7 +25,7 @@ export default function NavPills() {
                     <div>Account Details</div>
                 </a>
                 <NavLink className="nav-link" to="/">
-                    <i class="fa fa-sign-out-alt" />
+                    <i className="fa fa-sign-out-alt" />
                     <div>Logout</div>
                 </NavLink>
             </div>

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import InputText from "../../../../../input-text/InputText";
+import InputText from "../../../../../inputs/input-text/InputText";
 
 import UpdateButton from "../update-button/UpdateButton";
 
@@ -27,10 +27,10 @@ export default function AccountDetails() {
         <>
             <h4>Account Details</h4>
             <div className="row">
-            {inputTexts.map(inputText =>
-                <InputText key={inputText.name} {...{...inputText, type: 'text', inputChangeHandler: inputChangeHandler}} />
-            )}
-            <UpdateButton text="Update Account" />
+                {inputTexts.map(inputText =>
+                    <InputText key={inputText.name} {...inputText} type='text' inputChangeHandler={inputChangeHandler} />
+                )}
+                <UpdateButton text="Update Account" />
             </div>
         </>
     );

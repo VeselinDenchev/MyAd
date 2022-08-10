@@ -1,4 +1,4 @@
-import CartPageTable from "./cart-page-table/CartPageTable";
+import ProductTable from "../../product/product-table/ProductTable";
 import PreCheckout from "./pre-checkout/PreCheckout";
 
 export default function Cart() {
@@ -6,7 +6,11 @@ export default function Cart() {
         <div className="cart-page">
             <div className="container-fluid">
                 <div className="row">
-                    <CartPageTable />
+                    <div className="col-lg-8">
+                        <div className="cart-page-inner">
+                            <ProductTable />
+                        </div>
+                    </div>
                     <PreCheckout />
                 </div>
             </div>

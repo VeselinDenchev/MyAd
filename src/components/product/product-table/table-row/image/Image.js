@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function Image({image}) {
     return (
         <div className="img">
-            <a href="#"><img src={image} alt="Image" /></a>
+            <Link to="/"><img src={image} alt="Product" /></Link>
             <p>Product Name</p>
         </div>
     );

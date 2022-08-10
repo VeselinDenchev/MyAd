@@ -1,4 +1,4 @@
-import Quantity from "../../../../product/quantity/Quantity";
+import Quantity from "../../quantity/Quantity";
 import Image from "./image/Image";
 
 export default function TableRow({image}) {

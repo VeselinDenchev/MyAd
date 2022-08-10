@@ -1,6 +1,6 @@
-export default function InputCheckbox({checkoutForm, setCheckoutForm, checkbox}) {
+export default function InputCheckbox({form, setForm, checkbox}) {
     const checkboxChangeHandler = (event) => 
-                                    setCheckoutForm(checkoutForm => ({...checkoutForm, [event.target.name]: event.target.checked}));
+                                    setForm(form => ({...form, [event.target.name]: event.target.checked}));
 
     return (
         <div className="col-md-12">
@@ -9,7 +9,7 @@ export default function InputCheckbox({checkoutForm, setCheckoutForm, checkbox})
                     type="checkbox"
                     className="custom-control-input"
                     name={checkbox.name}
-                    value={checkoutForm.willCreateAccount}
+                    value={form[checkbox.name]}
                     onChange={checkboxChangeHandler}
                     id={checkbox.name}
                 />
