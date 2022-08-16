@@ -5,7 +5,7 @@ import UserButton from "./user-button/UserButton";
 export default function UserButtons() {
     const [userButtons, setUserButtons] = useState(
     [
-        {destination: 'wishlist', iconClassName: 'fa fa-heart'},
+        //{destination: 'wishlist', iconClassName: 'fa fa-heart'},
         {destination: 'cart', iconClassName: 'fa fa-shopping-cart'}
     ]);
 

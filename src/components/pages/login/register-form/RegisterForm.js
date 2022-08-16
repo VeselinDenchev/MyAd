@@ -18,8 +18,8 @@ export default function RegisterForm() {
         {name: 'lastName', label: 'Last Name', value: registerForm.lastName, type: 'text'},
         {name: 'email', label: 'E-mail', value: registerForm.email, type: 'email'},
         {name: 'mobileNumber', label: 'Mobile No', value: registerForm.mobileNumber, type: 'text'},
-        {name: 'typePassword', label: 'Password', value: registerForm.password, type: 'password'},
-        {name: 'retypePassword', label: 'Password', value: registerForm.confirmPassword, type: 'password'}
+        {name: 'password', label: 'Password', value: registerForm.password, type: 'password'},
+        {name: 'retypePassword', label: 'Retype Password', value: registerForm.retypePassword, type: 'password'}
     ];
 
     const inputChangeHandler = (event) => setRegisterForm({...registerForm, [event.target.name]: event.target.value});

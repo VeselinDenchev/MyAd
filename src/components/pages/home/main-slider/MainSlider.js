@@ -17,7 +17,7 @@ export default function MainSlider() {
 
     const categoryImages = 
     [
-        'img/category-1.jpg',
+        'img/category-1.png',
         'img/category-2.jpg',
     ];
 

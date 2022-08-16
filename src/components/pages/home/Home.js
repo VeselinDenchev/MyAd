@@ -11,9 +11,9 @@ export default function Home() {
         <main>
             <MainSlider />
             <Brand />
-            <Feature />
-            <Category />
-            <CallToAction />
+            {/* <Feature /> */}
+            {/* <Category /> */}
+            {/* <CallToAction /> */}
             <FeaturedProduct />
             <RecentProduct />
         </main>

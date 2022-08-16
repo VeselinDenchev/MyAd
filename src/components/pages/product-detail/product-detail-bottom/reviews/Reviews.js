@@ -18,6 +18,7 @@ export default function Reviews() {
                 <p>
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
                 </p>
+                <button className="btn" type="button">Edit</button>
             </div>
             <div className="reviews-submit">
                 <h4>Give your Review:</h4>

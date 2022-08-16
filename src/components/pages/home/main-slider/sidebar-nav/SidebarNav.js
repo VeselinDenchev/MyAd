@@ -6,12 +6,11 @@ export default function SidebarNav()
     [
         {link: '#', iconClassName: "fa fa-home", destinationName: 'Home'},
         {link: '#', iconClassName: "fa fa-shopping-bag", destinationName: 'Best Selling'},
-        {link: '#', iconClassName: "fa fa-plus-square", destinationName: 'New Arrivals'},
-        {link: '#', iconClassName: "fa fa-female", destinationName: 'Fashion & Beauty'},
-        {link: '#', iconClassName: "fa fa-child", destinationName: 'Kids & Babies Clothes'},
-        {link: '#', iconClassName: "fa fa-tshirt", destinationName: 'Men & Women Clothes'},
-        {link: '#', iconClassName: "fa fa-mobile-alt", destinationName: 'Gadgets & Accessories'},
-        {link: '#', iconClassName: "fa fa-microchip", destinationName: 'Electronics & Accessories'}
+        {link: '#', iconClassName: "fas fa-business-time", destinationName: 'Business Laptops'},
+        {link: '#', iconClassName: "fa fa-gamepad", destinationName: 'Gaming Laptops'},
+        {link: '#', iconClassName: "fa fa-laptop", destinationName: 'Ultrabooks'},
+        {link: '#', iconClassName: "fa fa-desktop", destinationName: 'Gaming PCs'},
+        {link: '#', iconClassName: "fas fa-money-check", destinationName: 'Budget PCs'}
     ];
 
     return (

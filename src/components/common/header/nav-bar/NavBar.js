@@ -6,7 +6,7 @@ import MainNav from "./main-nav/MainNav";
 export default function NavBar() {
     const mainNavDropdownItems = 
     [
-        {name: 'Wishlist', link: '/wishlist'}, 
+        //{name: 'Wishlist', link: '/wishlist'}, 
         {name: 'Login & Register', link: '/login'},
         {name: 'Contact Us', link: '/contact'} 
     ];

@@ -70,7 +70,7 @@ export default function Footer() {
                         </ul>
                     </FooterWidget>
                 </div>
-                <Payment />
+                {/* <Payment /> */}
             </div>
         </div>
     );

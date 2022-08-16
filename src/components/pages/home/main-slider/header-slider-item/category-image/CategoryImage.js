@@ -1,10 +1,10 @@
 import CategoryImageCaption from "./category-image-caption/CategoryImageCaption";
 
-export default function CategoryImage()
+export default function CategoryImage({image})
 {
     return (
         <div className="img-item">
-            <img src="img/category-1.jpg" />
+            <img src={image} alt="category" />
             <CategoryImageCaption />
         </div>
 );
