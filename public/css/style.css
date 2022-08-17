@@ -1004,6 +1004,10 @@ h2 {
     border-radius: 0;
 }
 
+.dropdown-menu-right a:active {
+    background-color: #FF6F61;
+}
+
 .product-view .product-item {
     margin-bottom: 30px;
 }
