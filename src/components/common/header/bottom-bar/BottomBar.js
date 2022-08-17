@@ -8,7 +8,7 @@ export default function BottomBar() {
             <div className="container-fluid">
                 <div className="row align-items-center">
                     <Logo />
-                    <Search />
+                    {/* <Search /> */}
                     <UserButtons />
                 </div>
             </div>

@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import { ProductContext } from "./contexts/ProductContext";
+import { ProductProvider } from "./contexts/ProductContext";
 
 import logo from './logo.svg';
 import './App.css';
@@ -24,61 +24,43 @@ import * as productService from './services/productService';
 
 function App() {
     let location = useLocation();
-    const [products, setProducts] = useState([]);
-    const [error, setError] = useState(null);
+    useLayoutEffect(() => {
+        const jqueryScript = document.createElement('jqueryScript');
+        jqueryScript.src = "https://code.jquery.com/jquery-3.4.1.min.js";
+        jqueryScript.defer = true;
+        document.body.appendChild(jqueryScript);
 
-    useEffect(() => {
-        productService.getAllProducts()
-             .then(products => setProducts(products.sort((a, b) => a.name.localeCompare(b.name))))
-             .catch(error => {
-                 setError("Can't fetch data!");
-             });
+        const bootstrapScript = document.createElement('bootstrapScript');
+        bootstrapScript.src = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js";
+        bootstrapScript.defer = true;
+        document.body.appendChild(bootstrapScript);
 
-        console.log(error);
+        const easingScript = document.createElement('easingScript');
+        easingScript.src = "%PUBLIC_URL%/lib/easing/easing.min.js";
+        easingScript.defer = true;
+        document.body.appendChild(easingScript);
 
-        /*if (regions.length > 0) {
-            setIsLoading(false);
-        }*/
-    }, []);
-    
+        /*const slickScript = document.createElement('slickScript');
+        slickScript.src = "%PUBLIC_URL%/lib/slick/slick.min.js";
+        document.body.appendChild(slickScript);*/
 
-  useLayoutEffect(() => {
-    const jqueryScript = document.createElement('jqueryScript');
-    jqueryScript.src = "https://code.jquery.com/jquery-3.4.1.min.js";
-    jqueryScript.defer = true;
-    document.body.appendChild(jqueryScript);
+        const mainScript = document.createElement('mainScript');
+        mainScript.src = "%PUBLIC_URL%/js/main.js";
+        mainScript.defer = true;
+        document.body.appendChild(mainScript);
 
-    const bootstrapScript = document.createElement('bootstrapScript');
-    bootstrapScript.src = "https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.bundle.min.js";
-    bootstrapScript.defer = true;
-    document.body.appendChild(bootstrapScript);
-
-    const easingScript = document.createElement('easingScript');
-    easingScript.src = "%PUBLIC_URL%/lib/easing/easing.min.js";
-    easingScript.defer = true;
-    document.body.appendChild(easingScript);
-
-    /*const slickScript = document.createElement('slickScript');
-    slickScript.src = "%PUBLIC_URL%/lib/slick/slick.min.js";
-    document.body.appendChild(slickScript);*/
-
-    const mainScript = document.createElement('mainScript');
-    mainScript.src = "%PUBLIC_URL%/js/main.js";
-    mainScript.defer = true;
-    document.body.appendChild(mainScript);
-
-    console.log(location.pathname);
+        console.log(location.pathname);
 
 
-    return () => {
-      document.body.removeChild(jqueryScript);
-      document.body.removeChild(bootstrapScript);
-      document.body.removeChild(easingScript);
-      //document.body.removeChild(slickScript);
-      document.body.removeChild(mainScript);
+        return () => {
+        document.body.removeChild(jqueryScript);
+        document.body.removeChild(bootstrapScript);
+        document.body.removeChild(easingScript);
+        //document.body.removeChild(slickScript);
+        document.body.removeChild(mainScript);
 
-    }
-  }, [location.pathname]);
+        }
+    }, [location.pathname]);
 
   return (
     <>
@@ -88,7 +70,7 @@ function App() {
 
         <Header />
 
-        <ProductContext.Provider value={{products}}>
+        <ProductProvider>
             <Routes>
                 <Route index path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
@@ -100,7 +82,7 @@ function App() {
                 <Route path="/login" element={<Login />} />
                 <Route path="/contact" element={<Contact />} />
             </Routes>
-        </ProductContext.Provider>
+        </ProductProvider>
 
         <Footer />
 

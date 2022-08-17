@@ -10,7 +10,7 @@ export default function UserButtons() {
     ]);
 
     return (
-        <div className="col-md-3">
+        <div className="col-md-9">
             <div className="user">
                 {userButtons.map(button =>
                     <UserButton key={button.destination} {...button} />

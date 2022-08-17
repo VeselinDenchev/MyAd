@@ -5,11 +5,10 @@ import Sidebar from "../../../sidebar/Sidebar";
 import Pagination from "./pagination/Pagination";
 import ProductViewTop from "./product-view-top/ProductViewTop";
 
-import * as productService from '../../../../services/productService';
 import { ProductContext } from '../../../../contexts/ProductContext';
 
 export default function ProductList() {
-    const { products } = useContext(ProductContext);
+    const { products, filteredProducts } = useContext(ProductContext);
 
     return (
         <div className="product-view">
@@ -20,7 +19,7 @@ export default function ProductList() {
                             <div className="col-md-12">
                                 <ProductViewTop />
                             </div>
-                            {products.length > 0 && products.map(product =>
+                            {filteredProducts.length > 0 && filteredProducts.map(product =>
                                 <div key={product.id} className="col-md-4">
                                     <ProductItem product={product} />
                                 </div>

@@ -41,7 +41,7 @@ export default function Header() {
             <TopBar />
             <NavBar />
             <BottomBar />
-            {!isHomePage ? <Breadcrumb links={links} /> : <></> }
+            {/* {!isHomePage ? <Breadcrumb links={links} /> : <></> } */}
         </header>
     );
 }

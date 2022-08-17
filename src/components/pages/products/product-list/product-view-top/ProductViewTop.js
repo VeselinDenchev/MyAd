@@ -1,10 +1,18 @@
+import { useContext, useState } from "react";
+import { ProductContext } from "../../../../../contexts/ProductContext";
+
 import ProductFilter from "./product-filter/ProductFilter";
 import ProductSearch from "./product-search/ProductSearch";
 
 export default function ProductViewTop() {
+    const { filterProducts } = useContext(ProductContext);
+
+    const [search, setSearch] = useState('');
+    const [criteria, setCriteria] = useState('name');
+
     const filters = 
     [
-        {name: 'Product short by', types: ['Newest', 'Popular', 'Most sale']},
+        {name: 'Product sort by', types: ['Newest', 'Popular', 'Most sale']},
         {
             name: 'Product price range', 
             types: 
@@ -17,11 +25,20 @@ export default function ProductViewTop() {
         }
     ];
 
+    function searchChangeHandler (event) {
+        setSearch(event.target.value);
+    }
+
+    function searchSubmitHandler(event) {
+        event.preventDefault();
+
+        filterProducts(search, criteria);
+    }
 
     return (
         <div className="product-view-top">
             <div className="row">
-            <ProductSearch />
+            <ProductSearch searchedText={search} onSearchChange={searchChangeHandler} onSearchSubmit={searchSubmitHandler} />
             {filters.map(filter =>
                 <ProductFilter key={filter.name} filter={filter} />
             )}
