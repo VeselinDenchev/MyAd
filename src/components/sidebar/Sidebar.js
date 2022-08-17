@@ -3,13 +3,14 @@ import SidebarWidgetCategory from "./sidebar-widgets/sidebar-widget-category/Sid
 import SidebarWidgetSlider from "./sidebar-widgets/sidebar-widget-slider/SlidebarWidgetSlider";
 import SidebarWidgetTag from "./sidebar-widgets/sidebar-widget-tag/SidebarWidgetTag";
 
-export default function Sidebar() {
+export default function Sidebar({products}) {
+    console.log(products);
     return (
         <div className="col-lg-4 sidebar">
             <SidebarWidgetCategory />
-            <SidebarWidgetSlider />
+            <SidebarWidgetSlider products={products} />
             <SidebarWidgetBrands />            
-            <SidebarWidgetTag />
+            {/* <SidebarWidgetTag /> */}
         </div>
     );
 }

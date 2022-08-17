@@ -1,4 +1,4 @@
-import Navbar from "../../navbar/Navbar";
+import Navbar from "../../../product/navbar/Navbar";
 
 export default function SidebarWidgetCategory() {
     return (

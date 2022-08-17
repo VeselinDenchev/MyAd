@@ -1,8 +1,6 @@
-import Navbar from "../../../../product/navbar/Navbar";
 import NavItem from "./nav-item/NavItem";
 
-export default function SidebarNav()
-{
+export default function Navbar() {
     const navItems = 
     [
         {link: '#', iconClassName: "fa fa-home", destinationName: 'Home'},
@@ -14,11 +12,14 @@ export default function SidebarNav()
         {link: '#', iconClassName: "fas fa-money-check", destinationName: 'Budget PCs'}
     ];
 
+
     return (
-        <div className="col-md-3">
-            <nav className="navbar bg-light">
-                <Navbar />
-            </nav>
-        </div>
+        <nav className="navbar bg-light">
+            <ul className="navbar-nav">
+                {navItems.map(navItem =>
+                    <NavItem key={navItem.destinationName} {...navItem} />
+                )}
+            </ul>
+        </nav>
     );
 }

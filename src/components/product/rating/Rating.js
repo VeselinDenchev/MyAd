@@ -1,11 +1,19 @@
-export default function Rating() {
+import { useEffect } from "react";
+
+export default function Rating({ rating }) {
+    const keys = [...Array(rating).keys()];
+
+    useEffect(() => {
+        const ratingComponents = 
+        <>
+        </>
+    }, [])
+
     return (
         <div className="ratting">
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
-            <i className="fa fa-star"></i>
+            {keys.map(key => 
+                <i key={key} className="fa fa-star" />
+            )}
         </div>
     );
 }

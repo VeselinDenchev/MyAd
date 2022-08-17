@@ -15,10 +15,10 @@ export default function MainSlider() {
         'img/slider-3.jpg',
     ];
 
-    const categoryImages = 
+    const categoryImagesCaptions = 
     [
-        'img/category-1.png',
-        'img/category-2.jpg',
+        {image: 'img/category-1.png', caption: 'Here you can fufill all your needs for gaming machine'},
+        {image: 'img/category-2.jpg', caption: 'We can offer you good computers for your business'}
     ];
 
     const sliderSettings = {
@@ -43,8 +43,8 @@ export default function MainSlider() {
                     </div>
                     <div className="col-md-3">
                         <div className="header-img">
-                            {categoryImages.map(imageSource =>
-                                <CategoryImage key={imageSource} image={imageSource} />
+                            {categoryImagesCaptions.map(imageCaption =>
+                                <CategoryImage key={imageCaption.image} {...imageCaption} />
                             )}
                         </div>
                     </div>

@@ -1,12 +1,12 @@
 import ProductAction from "./product-action/ProductAction";
 
-export default function ProductImage(props) {
+export default function ProductImage({image}) {
     return (
         <div className="product-image">
             <a href="product-detail.html">
-                <img src={props.image} alt="Product Image" />
+                <img src={image.url} alt="Product Image" />
             </a>
-            <ProductAction />
+            {/* <ProductAction /> */}
         </div>
     );
 }

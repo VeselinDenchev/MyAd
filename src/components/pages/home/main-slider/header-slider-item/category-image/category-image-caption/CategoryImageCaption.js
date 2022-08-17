@@ -1,7 +1,7 @@
-export default function CategoryImageCaption() {
+export default function CategoryImageCaption({caption}) {
     return (
         <a className="img-text" href="">
-            <p>Some text goes here that describes the image</p>
+            <p>{caption}</p>
         </a>
     );
 }

@@ -1,7 +1,7 @@
 import Slider from "react-slick";
 import ProductItem from "../../../product/product-item/ProductItem";
 
-export default function SidebarWidgetSlider() {
+export default function SidebarWidgetSlider({products}) {
     const productImages = 
     [
         'img/product-10.jpg',
@@ -20,11 +20,10 @@ export default function SidebarWidgetSlider() {
     return (
         <div className="sidebar-widget widget-slider">
             <Slider {...sidebarSliderSettings} className="sidebar-slider normal-slider">
-                    {productImages.map(image =>
-                        <ProductItem key={image} image={image} />
-                    )}
+                {products.map(product =>
+                    <ProductItem key={product.id} product={product} />
+                )}
             </Slider>
         </div>
-
     );
 }
