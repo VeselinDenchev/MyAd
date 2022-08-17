@@ -1,7 +1,11 @@
+import { useContext } from "react";
 import Slider from "react-slick";
+import { ProductContext } from "../../../../contexts/ProductContext";
 import ProductItem from "../../../product/product-item/ProductItem";
 
-export default function SidebarWidgetSlider({products}) {
+export default function SidebarWidgetSlider() {
+    const { products } = useContext(ProductContext);
+
     const productImages = 
     [
         'img/product-10.jpg',

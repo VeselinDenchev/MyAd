@@ -1,7 +1,7 @@
-export default function Brand({name, quantity}) {
+export default function Brand({brand}) {
     return (
         <>
-            <li><a href="#">{name}</a><span>({quantity})</span></li>
+            <li><a href="#">{brand.name}</a><span>({brand.brandProductsCount})</span></li>
         </>
     );
 }

@@ -1,15 +1,8 @@
 const baseUrl = 'https://localhost:7282/api/product';
 
 export async function getAllProducts() {
-    console.log("entered");
-
-    const response = await fetch('https://localhost:7282/api/product/all');
-
-    console.log(response);
-
+    const response = await fetch(`${baseUrl}/all`);
     const products =  await response.json();
-
-    console.log(products);
 
     return products;
 }

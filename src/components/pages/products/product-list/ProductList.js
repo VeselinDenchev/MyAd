@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import ProductItem from "../../../product/product-item/ProductItem";
 import Sidebar from "../../../sidebar/Sidebar";
@@ -6,37 +6,10 @@ import Pagination from "./pagination/Pagination";
 import ProductViewTop from "./product-view-top/ProductViewTop";
 
 import * as productService from '../../../../services/productService';
+import { ProductContext } from '../../../../contexts/ProductContext';
 
 export default function ProductList() {
-    const [products, setProducts] = useState([]);
-    const [error, setError] = useState(null);
-
-    useEffect(() => {
-        productService.getAllProducts()
-             .then(products => setProducts(products.sort((a, b) => a.name.localeCompare(b.name))))
-             .catch(error => {
-                 setError("Can't fetch data!");
-             });
-
-        console.log(error);
-
-        /*if (regions.length > 0) {
-            setIsLoading(false);
-        }*/
-    }, []);
-    
-    const productImages =
-    [
-        'img/product-1.jpg',
-        'img/product-2.jpg',
-        'img/product-3.jpg',
-        'img/product-4.jpg',
-        'img/product-5.jpg',
-        'img/product-6.jpg',
-        'img/product-7.jpg',
-        'img/product-8.jpg',
-        'img/product-9.jpg',
-    ];
+    const { products } = useContext(ProductContext);
 
     return (
         <div className="product-view">

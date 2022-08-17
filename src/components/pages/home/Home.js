@@ -14,8 +14,8 @@ export default function Home() {
             {/* <Feature /> */}
             {/* <Category /> */}
             {/* <CallToAction /> */}
-            <FeaturedProduct />
-            <RecentProduct />
+            {/* <FeaturedProduct />
+            <RecentProduct /> */}
         </main>
     );
 }

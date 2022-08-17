@@ -1,6 +1,8 @@
-import { useLayoutEffect } from "react";
+import { useState, useEffect, useLayoutEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Routes, Route, useLocation } from 'react-router-dom';
+
+import { ProductContext } from "./contexts/ProductContext";
 
 import logo from './logo.svg';
 import './App.css';
@@ -18,8 +20,27 @@ import Wishlist from "./components/pages/wishlist/Wishlist";
 import Login from "./components/pages/login/Login";
 import Contact from "./components/pages/contact/Contact";
 
+import * as productService from './services/productService';
+
 function App() {
     let location = useLocation();
+    const [products, setProducts] = useState([]);
+    const [error, setError] = useState(null);
+
+    useEffect(() => {
+        productService.getAllProducts()
+             .then(products => setProducts(products.sort((a, b) => a.name.localeCompare(b.name))))
+             .catch(error => {
+                 setError("Can't fetch data!");
+             });
+
+        console.log(error);
+
+        /*if (regions.length > 0) {
+            setIsLoading(false);
+        }*/
+    }, []);
+    
 
   useLayoutEffect(() => {
     const jqueryScript = document.createElement('jqueryScript');
@@ -67,17 +88,19 @@ function App() {
 
         <Header />
 
-        <Routes>
-          <Route index path="/" element={<Home />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/product-detail" element={<ProductDetail />} />
-          <Route path="/cart" element={<Cart />} />
-          <Route path="/checkout" element={<Checkout />} />
-          <Route path="/my-account" element={<MyAccount />} />
-          <Route path="/wishlist" element={<Wishlist />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
+        <ProductContext.Provider value={{products}}>
+            <Routes>
+                <Route index path="/" element={<Home />} />
+                <Route path="/products" element={<Products />} />
+                <Route path="/product-detail" element={<ProductDetail />} />
+                <Route path="/cart" element={<Cart />} />
+                <Route path="/checkout" element={<Checkout />} />
+                <Route path="/my-account" element={<MyAccount />} />
+                <Route path="/wishlist" element={<Wishlist />} />
+                <Route path="/login" element={<Login />} />
+                <Route path="/contact" element={<Contact />} />
+            </Routes>
+        </ProductContext.Provider>
 
         <Footer />
 

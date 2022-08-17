@@ -1,7 +1,13 @@
+import { useContext } from "react";
 import Slider from "react-slick";
+
+import { ProductContext } from "../../../contexts/ProductContext";
+
 import ProductItem from "../product-item/ProductItem";
 
 export default function FourProductsSlider({images}) {
+    const { products } = useContext(ProductContext);
+
     const sliderSettings = {
         autoplay: true,
         infinite: true,
@@ -38,8 +44,8 @@ export default function FourProductsSlider({images}) {
 
     return (
         <Slider {...sliderSettings}>
-        {images.map(image =>
-            <ProductItem key={image} image={image} />
+        {products.map(product =>
+            <ProductItem key={product.id} product={product} />
         )}
         </Slider>
     );

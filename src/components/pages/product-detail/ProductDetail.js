@@ -109,7 +109,6 @@ export default function ProductDetail() {
                             </Slider>
                         </div>
                     </div>
-                    
                     <Sidebar />
                 </div>
             </div>
