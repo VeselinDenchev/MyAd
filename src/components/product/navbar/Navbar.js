@@ -1,9 +1,12 @@
+import { useLocation } from "react-router-dom";
+
 import NavItem from "./nav-item/NavItem";
 
-export default function Navbar() {
+export default function Navbar({searchParams, setSearchParams}) {
+    const location = useLocation();
+
     const navItems = 
     [
-        {link: '#', iconClassName: "fa fa-shopping-bag", destinationName: 'Best Selling'},
         {link: '#', iconClassName: "fas fa-business-time", destinationName: 'Business Laptops'},
         {link: '#', iconClassName: "fa fa-gamepad", destinationName: 'Gaming Laptops'},
         {link: '#', iconClassName: "fa fa-laptop", destinationName: 'Ultrabooks'},
@@ -16,7 +19,7 @@ export default function Navbar() {
         <nav className="navbar bg-light">
             <ul className="navbar-nav">
                 {navItems.map(navItem =>
-                    <NavItem key={navItem.destinationName} {...navItem} />
+                    <NavItem key={navItem.destinationName} {...navItem} searchParams={searchParams} setSearchParams={setSearchParams} />
                 )}
             </ul>
         </nav>

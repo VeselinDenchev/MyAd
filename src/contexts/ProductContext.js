@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useH } from "react-router-dom";
 
 import * as productService from '../services/productService';
 
@@ -10,6 +10,7 @@ export function ProductProvider({children}) {
     const [filteredProducts, setFilteredProducts] = useState(products);
 
     const location = useLocation();
+    const [previousLocationPathName, setPreviousLocationPathName] = useState('');
 
     useEffect(() => {
         productService.getAllProducts()
@@ -24,9 +25,14 @@ export function ProductProvider({children}) {
         }*/
     }, []);
 
-    useEffect(() => setFilteredProducts(products), [location.pathname])
+    useEffect(() => {
+        if ((previousLocationPathName === '/' && location.pathname.includes('/products'))
+            || (previousLocationPathName.includes('/products') && !location.pathname.includes('/products'))) {
+            setFilteredProducts(products);
+        }
 
-    //useEffect(() => setFilteredProducts(products), [location.pathname]);
+        setPreviousLocationPathName(location.pathname);
+    }, [location.pathname])
 
     function searchProducts(searchedText = '', criteria = 'name') {
         if (searchedText === '') {
@@ -38,41 +44,34 @@ export function ProductProvider({children}) {
     }
 
     function sortProducts(sortType) {
+        let sortFunction;
+
         switch (sortType) {
             case 'mostSale':
-                setFilteredProducts([...filteredProducts].sort(function(a, b) {
-                    if (a.salesCount > b.salesCount) return 1;
-                    
-                    if (a.salesCount === b.salesCount) return 0;
-                    
-                    return -1;
-                }));
+                sortFunction = (a, b) => b.salesCount - a.salesCount;
                 break;
 
             case 'newest':
-                setFilteredProducts([...filteredProducts].sort((a, b) => new Date(b.createdAtUtc) - new Date(a.createdAtUtc)));
+                sortFunction = (a, b) => new Date(b.createdAtUtc) - new Date(a.createdAtUtc);
                 break;
         
             case "highestRated":
-                setFilteredProducts([...filteredProducts].sort(function(a, b) {
-                    if (a.rating < b.rating) return 1;
-
-                    if (a.rating === b.rating) return 0;
-
-
-                    return -1;
-                }));
+                sortFunction = (a, b) => b.rating - a.rating;
                 break;
 
             case "highestToLowestPrice":
+                sortFunction = (a, b) => b.price - a.price;
+
             case "lowestToHighestPrice":
-                setFilteredProducts([...filteredProducts].sort((a, b) => sortByPrice(a, b, sortType === 'lowestToHighestPrice')));
+                sortFunction = (a, b) => a.price - b.price;
                 break;
 
             default:
-                setFilteredProducts([...filteredProducts].sort((a, b) => a.name.localeCompare(b.name)));
+                sortFunction = (a, b) => a.name.localeCompare(b.name);
                 break;
         }
+
+        setFilteredProducts([...filteredProducts].sort(sortFunction));
     }
 
     function filterProductsByPrice(priceRangeString) {
@@ -95,7 +94,9 @@ export function ProductProvider({children}) {
         console.log(filteredProducts);
     }
 
-    const filterProductsByCategory = (categoryName) => setFilteredProducts(products.filter(p => p.model.category.name == categoryName));
+    const filterProductsByCategory = (categoryName) => {
+        setFilteredProducts(products.filter(p => p.model.category.name === categoryName));
+    } 
 
     return (
         <ProductContext.Provider 
@@ -112,12 +113,4 @@ export function ProductProvider({children}) {
             {children}
         </ProductContext.Provider>
     )
-}
-
-function sortByPrice(firstValue, secondValue, isFromLowestToHighest) {
-    if (firstValue.price < secondValue.price) return isFromLowestToHighest ? -1 : 1;
-
-    if (firstValue.price > secondValue.price) return !isFromLowestToHighest ? -1 : 1;
-
-    return 0;
 }

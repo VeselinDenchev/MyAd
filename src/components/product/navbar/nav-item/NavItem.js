@@ -1,13 +1,21 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { ProductContext } from "../../../../contexts/ProductContext";
 
-export default function NavItem({iconClassName, destinationName}) {
+export default function NavItem({iconClassName, destinationName, searchParams, setSearchParams}) {
     const { filterProductsByCategory } = useContext(ProductContext);
+
+    useEffect(() => {
+         if (searchParams && destinationName === searchParams?.get('categoryName')) {
+             filterProductsByCategory(destinationName);
+         }
+    }, [searchParams?.get('categoryName')])
 
     function clickHandler(event) {
         event.preventDefault();
 
         filterProductsByCategory(destinationName);
+
+        setSearchParams({categoryName: destinationName});
     }
 
     return (

@@ -1,23 +1,12 @@
 import { useEffect } from "react";
 import { useContext, useState } from "react";
-import { useSearchParams } from "react-router-dom";
+
 import { ProductContext } from "../../../../../contexts/ProductContext";
 
 import ProductFilter from "./product-filter/ProductFilter";
 import ProductSearch from "./product-search/ProductSearch";
 
-export default function ProductViewTop() {
-    const { searchProducts, products } = useContext(ProductContext);
-
-    const [searchParams, setSearchParams] = useSearchParams();
-
-    const [search, setSearch] = useState(searchParams.get('productName'));
-    const [criteria, setCriteria] = useState('name');
-
-    useEffect(() => {
-        searchProducts(search, criteria);
-    }, [searchParams, products])
-
+export default function ProductViewTop({search, searchChangeHandler}) {
     const filters = 
     [
         {name: 'Sort by', 
@@ -42,21 +31,6 @@ export default function ProductViewTop() {
             ]
         }
     ];
-
-    function searchChangeHandler(event) {
-        setSearch(event.target.value); 
-
-        let urlSearchParams;
-
-        if (event.target.value === '') {
-            urlSearchParams = {};
-        }
-        else {
-            urlSearchParams = {productName: event.target.value};
-        }
-
-        setSearchParams(urlSearchParams);
-    }
 
     return (
         <div className="product-view-top">

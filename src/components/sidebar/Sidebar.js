@@ -1,14 +1,14 @@
 import SidebarWidgetBrands from "./sidebar-widgets/sidebar-widget-brands/SidebarWIdgetBrands";
-import SidebarWidgetCategory from "./sidebar-widgets/sidebar-widget-category/SidebarWIdgetCategory";
+import SidebarWidgetCategory from "./sidebar-widgets/sidebar-widget-category/SidebarWidgetCategory";
 import SidebarWidgetSlider from "./sidebar-widgets/sidebar-widget-slider/SlidebarWidgetSlider";
 import SidebarWidgetTag from "./sidebar-widgets/sidebar-widget-tag/SidebarWidgetTag";
 
-export default function Sidebar() {
+export default function Sidebar({searchParams, setSearchParams}) {
     return (
         <div className="col-lg-4 sidebar">
-            <SidebarWidgetCategory />
+            <SidebarWidgetCategory searchParams={searchParams} setSearchParams={setSearchParams} />
             <SidebarWidgetSlider />
-            <SidebarWidgetBrands />            
+            <SidebarWidgetBrands searchParams={searchParams} setSearchParams={setSearchParams} />            
             {/* <SidebarWidgetTag /> */}
         </div>
     );
