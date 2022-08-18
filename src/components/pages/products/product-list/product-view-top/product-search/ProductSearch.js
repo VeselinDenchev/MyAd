@@ -1,12 +1,9 @@
-export default function ProductSearch({searchedText, onSearchChange, onSearchSubmit}) {
+export default function ProductSearch({searchedText, onSearchChange}) {
     return (
         <div className="col-md-4">
             <div className="product-search">
-                <form onSubmit={onSearchSubmit}>
-                    <input type="text" value={searchedText} onChange={onSearchChange} placeholder="Search" />
-                    <button type="submit"><i className="fa fa-search"></i></button>
-                </form>
-
+                <input type="text" value={searchedText} onChange={onSearchChange} placeholder="Search" />
+                <button><i className="fa fa-search"></i></button>
             </div>
         </div>
     );

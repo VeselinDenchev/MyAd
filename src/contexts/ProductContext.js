@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 import * as productService from '../services/productService';
 
@@ -7,6 +8,8 @@ export const ProductContext = createContext();
 export function ProductProvider({children}) {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState(products);
+
+    const location = useLocation();
 
     useEffect(() => {
         productService.getAllProducts()
@@ -20,6 +23,10 @@ export function ProductProvider({children}) {
             setIsLoading(false);
         }*/
     }, []);
+
+    useEffect(() => setFilteredProducts(products), [location.pathname])
+
+    //useEffect(() => setFilteredProducts(products), [location.pathname]);
 
     function searchProducts(searchedText = '', criteria = 'name') {
         if (searchedText === '') {
@@ -59,7 +66,7 @@ export function ProductProvider({children}) {
 
             case "highestToLowestPrice":
             case "lowestToHighestPrice":
-                setFilteredProducts([...filteredProducts].sort((a, b) => filterByPrice(a, b, sortType === 'lowestToHighestPrice')));
+                setFilteredProducts([...filteredProducts].sort((a, b) => sortByPrice(a, b, sortType === 'lowestToHighestPrice')));
                 break;
 
             default:
@@ -88,14 +95,26 @@ export function ProductProvider({children}) {
         console.log(filteredProducts);
     }
 
+    const filterProductsByCategory = (categoryName) => setFilteredProducts(products.filter(p => p.model.category.name == categoryName));
+
     return (
-        <ProductContext.Provider value={{products, filteredProducts, searchProducts, sortProducts, filterProductsByPrice, filterProductsByBrand}}>
+        <ProductContext.Provider 
+            value={{
+                products,
+                filteredProducts, 
+                searchProducts, 
+                sortProducts, 
+                filterProductsByPrice, 
+                filterProductsByBrand,
+                filterProductsByCategory
+            }}
+        >
             {children}
         </ProductContext.Provider>
     )
 }
 
-function filterByPrice(firstValue, secondValue, isFromLowestToHighest) {
+function sortByPrice(firstValue, secondValue, isFromLowestToHighest) {
     if (firstValue.price < secondValue.price) return isFromLowestToHighest ? -1 : 1;
 
     if (firstValue.price > secondValue.price) return !isFromLowestToHighest ? -1 : 1;

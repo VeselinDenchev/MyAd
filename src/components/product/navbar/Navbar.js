@@ -3,7 +3,6 @@ import NavItem from "./nav-item/NavItem";
 export default function Navbar() {
     const navItems = 
     [
-        {link: '#', iconClassName: "fa fa-home", destinationName: 'Home'},
         {link: '#', iconClassName: "fa fa-shopping-bag", destinationName: 'Best Selling'},
         {link: '#', iconClassName: "fas fa-business-time", destinationName: 'Business Laptops'},
         {link: '#', iconClassName: "fa fa-gamepad", destinationName: 'Gaming Laptops'},
