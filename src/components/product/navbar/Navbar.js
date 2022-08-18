@@ -1,10 +1,6 @@
-import { useLocation } from "react-router-dom";
-
 import NavItem from "./nav-item/NavItem";
 
-export default function Navbar({searchParams, setSearchParams}) {
-    const location = useLocation();
-
+export default function Navbar() {
     const navItems = 
     [
         {link: '#', iconClassName: "fas fa-business-time", destinationName: 'Business Laptops'},
@@ -19,7 +15,7 @@ export default function Navbar({searchParams, setSearchParams}) {
         <nav className="navbar bg-light">
             <ul className="navbar-nav">
                 {navItems.map(navItem =>
-                    <NavItem key={navItem.destinationName} {...navItem} searchParams={searchParams} setSearchParams={setSearchParams} />
+                    <NavItem key={navItem.destinationName} {...navItem} />
                 )}
             </ul>
         </nav>

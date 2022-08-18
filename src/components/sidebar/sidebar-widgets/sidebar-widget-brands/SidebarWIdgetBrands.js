@@ -5,7 +5,7 @@ import getAllBrands from "../../../../services/brandService";
 
 import Brand from "./brand/Brand";
 
-export default function SidebarWidgetBrands({searchParams, setSearchParams}) {
+export default function SidebarWidgetBrands() {
     const [brands, setBrands] = useState([]);
 
     useEffect(() => {
@@ -21,7 +21,7 @@ export default function SidebarWidgetBrands({searchParams, setSearchParams}) {
             <h2 className="title">Brands</h2>
             <ul>
                 {brands.map(brand =>
-                    <Brand key={brand.name} brand={brand} searchParams={searchParams} setSearchParams={setSearchParams} />
+                    <Brand key={brand.name} brand={brand} />
                 )}
             </ul>
         </div>

@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useContext } from "react";
+import { useSearchParams } from "react-router-dom";
 import { ProductContext } from "../../../../../contexts/ProductContext";
 
-export default function Brand({brand, searchParams, setSearchParams}) {
+export default function Brand({brand}) {
     const { filterProductsByBrand } = useContext(ProductContext);
+
+    const [searchParams, setSearchParams] = useSearchParams();
 
     useEffect(() => {
         if (brand.name === searchParams.get('brandName')) {

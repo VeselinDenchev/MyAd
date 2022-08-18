@@ -26,8 +26,7 @@ export function ProductProvider({children}) {
     }, []);
 
     useEffect(() => {
-        if ((previousLocationPathName === '/' && location.pathname.includes('/products'))
-            || (previousLocationPathName.includes('/products') && !location.pathname.includes('/products'))) {
+        if ((previousLocationPathName.includes('/products') && !location.pathname.includes('/products'))) {
             setFilteredProducts(products);
         }
 
@@ -95,6 +94,7 @@ export function ProductProvider({children}) {
     }
 
     const filterProductsByCategory = (categoryName) => {
+        console.log(products);
         setFilteredProducts(products.filter(p => p.model.category.name === categoryName));
     } 
 

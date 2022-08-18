@@ -3,12 +3,12 @@ import SidebarWidgetCategory from "./sidebar-widgets/sidebar-widget-category/Sid
 import SidebarWidgetSlider from "./sidebar-widgets/sidebar-widget-slider/SlidebarWidgetSlider";
 import SidebarWidgetTag from "./sidebar-widgets/sidebar-widget-tag/SidebarWidgetTag";
 
-export default function Sidebar({searchParams, setSearchParams}) {
+export default function Sidebar() {
     return (
         <div className="col-lg-4 sidebar">
-            <SidebarWidgetCategory searchParams={searchParams} setSearchParams={setSearchParams} />
+            <SidebarWidgetCategory />
             <SidebarWidgetSlider />
-            <SidebarWidgetBrands searchParams={searchParams} setSearchParams={setSearchParams} />            
+            <SidebarWidgetBrands />            
             {/* <SidebarWidgetTag /> */}
         </div>
     );

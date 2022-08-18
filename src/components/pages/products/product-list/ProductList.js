@@ -16,6 +16,22 @@ export default function ProductList() {
     const [criteria, setCriteria] = useState('name');
     const [search, setSearch] = useState('');
 
+    const productsPerPage = 1;
+
+    const [currentPage, setCurrentPage] = useState(1);
+    const [offset, setOffset] = useState(0);
+    const [pagesCount, setPagesCount] = useState(Math.ceil(filteredProducts.length / productsPerPage));
+    const [currentPageData, setCurrentPageData] = useState(filteredProducts.slice(offset, offset + productsPerPage));
+
+    useEffect(() => {
+        setCurrentPageData(filteredProducts.slice(offset, offset + productsPerPage));
+        console.log(pagesCount);
+    }, [currentPage, filteredProducts])
+
+    useEffect(() => {
+        setPagesCount(Math.ceil(filteredProducts.length / productsPerPage));
+    }, [filteredProducts.length])
+
     useEffect(() => {
         if (searchParams.get('productName')) {
             setSearch(searchParams.get('productName'));
@@ -24,8 +40,8 @@ export default function ProductList() {
         else {
             setSearch('');
         }
-    }, [searchParams.get('productName'), products])
 
+    }, [searchParams.get('productName')])
     
     function searchChangeHandler(event) {
         setSearch(event.target.value); 
@@ -47,16 +63,16 @@ export default function ProductList() {
                             <div className="col-md-12">
                                 <ProductViewTop search={search} searchChangeHandler={searchChangeHandler} />
                             </div>
-                            {filteredProducts.length > 0 && filteredProducts.map(product =>
+                            {filteredProducts.length > 0 && currentPageData.map(product =>
                                 <div key={product.id} className="col-md-4">
                                     <ProductItem product={product} />
                                 </div>
                             )}
                         </div>
                     </div>
-                    {products.length > 0 && <Sidebar searchParams={searchParams} setSearchParams={setSearchParams} products={products} />}
+                    {products.length > 0 && <Sidebar products={products} />}
                 </div>
-                <Pagination />
+                <Pagination currentPage={currentPage} setCurrentPage={setCurrentPage} pagesCount={pagesCount} offset={offset} />
             </div>
         </div>
     );

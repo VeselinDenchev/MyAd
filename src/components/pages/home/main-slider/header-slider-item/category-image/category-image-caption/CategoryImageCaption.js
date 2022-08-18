@@ -1,7 +1,9 @@
+import { Link } from "react-router-dom";
+
 export default function CategoryImageCaption({caption}) {
     return (
-        <a className="img-text" href="">
+        <Link className="img-text" to={`/products?categoryName=${caption.includes('gaming') ? 'Gaming+Laptops' : 'Business+Laptops'}`}>
             <p>{caption}</p>
-        </a>
+        </Link>
     );
 }
