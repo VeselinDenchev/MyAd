@@ -2,7 +2,6 @@ import { useState } from "react";
 import Rating from "../../../../product/rating/Rating";
 
 export default function Reviews({reviews}) {
-    console.log(reviews);
     const [reviewForm, setReviewForm] = useState({
         name: '',
         email: '',

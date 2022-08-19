@@ -1,8 +1,6 @@
 import { useState } from "react";
 
-export default function NavPills() {
-    const [reviewsCount, setReviewsCount] = useState(1);
-    
+export default function NavPills({reviewsCount}) {
     return (
         <ul className="nav nav-pills nav-justified">
             <li className="nav-item">
