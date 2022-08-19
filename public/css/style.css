@@ -694,13 +694,13 @@ h2 {
     background: #FF6F61;
 }
 
-.product-item .product-title a,
+.product-item .product-title p,
 .product-item .product-title .ratting {
     position: relative;
     width: 100%;
 }
 
-.product-item .product-title a {
+.product-item .product-title p {
     margin-bottom: 5px;
     color: #ffffff;
     font-size: 18px;
@@ -718,7 +718,7 @@ h2 {
     color: #999999;
 }
 
-.product-item:hover .product-title a,
+.product-item:hover .product-title p,
 .product-item:hover .product-title .ratting i {
     color: #ffffff;
 }
@@ -732,7 +732,7 @@ h2 {
     overflow: hidden;
 }
 
-.product-item .product-image a {
+.product-item .product-image p {
     display: block;
     background: #ffffff;
     transition: .3s;

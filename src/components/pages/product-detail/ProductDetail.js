@@ -14,10 +14,21 @@ export default function ProductDetail() {
     const { products, product, setProductId} = useContext(ProductContext);
     const { productId } = useParams();
 
+    const [relatedProducts, setRelatedProducts] = useState([]);
+
     useEffect(() => {
         setProductId(productId);
         window. scrollTo(0, 0);
-    }, [products, productId])
+    }, [products, productId]);
+
+    useEffect(() => {
+        if (product) {
+            setRelatedProducts([...products.filter(p => p.model.brand.id === product.model.brand.id || p.model.category.id === product.model.category.id)]);
+        }
+
+        console.log(products);
+        console.log(relatedProducts);
+    }, [product])
 
 
     // const imagePaths = 
@@ -111,16 +122,16 @@ export default function ProductDetail() {
                         
                         {product && <ProductDetailBottom product={product} />}
                         
-                        {/* <div className="product">
+                        <div className="product">
                             <div className="section-header">
                                 <h1>Related Products</h1>
                             </div>
                             <Slider {...relatedProductsSliderSettings}>
-                                    {recentProductImages.map(image =>
-                                        <ProductItem key={image} image={image} />
-                                    )}
+                                {relatedProducts && relatedProducts.map(product =>
+                                    <ProductItem key={product.id} product={product} />
+                                )}
                             </Slider>
-                        </div> */}
+                        </div>
                     </div>
                     <Sidebar />
                 </div>

@@ -7,7 +7,7 @@ export default function Sidebar() {
     return (
         <div className="col-lg-4 sidebar">
             <SidebarWidgetCategory />
-            <SidebarWidgetSlider />
+            {/* <SidebarWidgetSlider /> */}
             <SidebarWidgetBrands />            
             {/* <SidebarWidgetTag /> */}
         </div>

@@ -9,7 +9,8 @@ export default function ProductItem({product}) {
         <Link to={`/product/${product.id}`}>
             <div className="product-item">
                 <div className="product-title">
-                    <a href={`/product/${product.id}`}>{product.name}</a>                   <Rating rating={product.rating} />
+                    <p href={`/product/${product.id}`}>{product.name}</p>
+                    <Rating rating={product.rating} />
                 </div>
                 <ProductImage image={product.images[0]} />
                 <ProductPrice price={product.price} />

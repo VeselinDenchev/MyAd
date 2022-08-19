@@ -1,11 +1,21 @@
 import { useState, useEffect } from "react";
+
 import Description from "./description/Description";
 import NavPills from "./nav-pills/NavPills";
 import Reviews from "./reviews/Reviews";
 import Specification from "./specification/Specification";
 
+import * as reviewService from '../../../../services/reviewService';
+
 export default function ProductDetailBottom({product}) {
     const [specifications, setSpecifications] = useState(null)
+    const [reviews, setReviews] = useState([]);
+
+    useEffect(() => {
+        reviewService.getAllProductReviews(product.id)
+            .then(reviews => setReviews(reviews.sort((a, b) => new Date(b.createdAtUtc) - new Date(a.createdAtUtc))))
+            .catch(console.log("Can't fetch reviews"));
+    }, [])
 
     useEffect(() => {
         setSpecifications({
@@ -36,7 +46,7 @@ export default function ProductDetailBottom({product}) {
                 <div className="tab-content">
                     <Description description={product.description} />
                     {specifications && <Specification specifications={specifications} />}
-                    {/* <Reviews reviews={product.reviews} /> */}
+                    <Reviews reviews={reviews} />
                 </div>
             </div>
     </div>

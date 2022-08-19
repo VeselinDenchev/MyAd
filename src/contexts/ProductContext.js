@@ -30,7 +30,6 @@ export function ProductProvider({children}) {
 
     useEffect(() => {
         if (products.length > 0) {
-            // console.log([...products.filter(p => p.id === productId)][0]);
             setProduct([...products.filter(p => p.id === productId)][0]);
         }
     }, [products.length, productId]);
