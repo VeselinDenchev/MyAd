@@ -3,7 +3,7 @@ import NavPills from "./nav-pills/NavPills";
 import Reviews from "./reviews/Reviews";
 import Specification from "./specification/Specification";
 
-export default function ProductDetailBottom() {
+export default function ProductDetailBottom({product}) {
     return (
         <div className="row product-detail-bottom">
             <div className="col-lg-12">
@@ -21,9 +21,9 @@ export default function ProductDetailBottom() {
                 <NavPills />
 
                 <div className="tab-content">
-                    <Description />
-                    <Specification />
-                    <Reviews />
+                    <Description description={product.description} />
+                    {/* <Specification specifications={product.specifications} /> */}
+                    {/* <Reviews reviews={product.reviews} /> */}
                 </div>
             </div>
     </div>

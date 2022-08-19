@@ -2,7 +2,6 @@ export default function Action() {
     const actions = 
     [
         {name: 'Add to cart', iconClassName: 'fa fa-shopping-cart'},
-        {name: 'Buy Now', iconClassName: 'fa fa-shopping-bag'}
     ];
 
     return (

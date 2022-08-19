@@ -9,6 +9,9 @@ export function ProductProvider({children}) {
     const [products, setProducts] = useState([]);
     const [filteredProducts, setFilteredProducts] = useState(products);
 
+    const [productId, setProductId] = useState(null);
+    const [product, setProduct] = useState(null);
+
     const location = useLocation();
     const [previousLocationPathName, setPreviousLocationPathName] = useState('');
 
@@ -24,6 +27,13 @@ export function ProductProvider({children}) {
             setIsLoading(false);
         }*/
     }, []);
+
+    useEffect(() => {
+        if (products.length > 0) {
+            // console.log([...products.filter(p => p.id === productId)][0]);
+            setProduct([...products.filter(p => p.id === productId)][0]);
+        }
+    }, [products.length, productId]);
 
     useEffect(() => {
         if ((previousLocationPathName.includes('/products') && !location.pathname.includes('/products'))) {
@@ -90,11 +100,9 @@ export function ProductProvider({children}) {
 
     function filterProductsByBrand(brandName) {
         setFilteredProducts(products.filter(p => p.model.brand.name === brandName));
-        console.log(filteredProducts);
     }
 
     const filterProductsByCategory = (categoryName) => {
-        console.log(products);
         setFilteredProducts(products.filter(p => p.model.category.name === categoryName));
     } 
 
@@ -107,7 +115,9 @@ export function ProductProvider({children}) {
                 sortProducts, 
                 filterProductsByPrice, 
                 filterProductsByBrand,
-                filterProductsByCategory
+                filterProductsByCategory,
+                setProductId,
+                product
             }}
         >
             {children}

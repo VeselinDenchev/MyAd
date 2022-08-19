@@ -1,7 +1,8 @@
 import { useState } from "react";
 import Rating from "../../../../product/rating/Rating";
 
-export default function Reviews() {
+export default function Reviews({reviews}) {
+    console.log(reviews);
     const [reviewForm, setReviewForm] = useState({
         name: '',
         email: '',
@@ -13,11 +14,17 @@ export default function Reviews() {
     return (
         <div id="reviews" className="container tab-pane fade">
             <div className="reviews-submitted">
-                <div className="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
-                <Rating />
-                <p>
-                    Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
-                </p>
+                {reviews.map(review =>
+                <div key={review.id}>
+                    <div className="reviewer">Phasellus Gravida - <span>01 Jan 2020</span></div>
+                    <Rating rating={review.rating} />
+                    <p>
+                        {review.comment}
+                    </p>
+                </div>
+
+                )}
+
                 <button className="btn" type="button">Edit</button>
             </div>
             <div className="reviews-submit">

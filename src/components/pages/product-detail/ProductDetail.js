@@ -1,4 +1,8 @@
+import { useState, useEffect } from "react";
+import { useContext } from "react";
+import { useParams, useSearchParams } from "react-router-dom";
 import Slider from "react-slick";
+import { ProductContext } from "../../../contexts/ProductContext";
 import Brand from "../../brand/Brand";
 import ProductItem from "../../product/product-item/ProductItem";
 import Sidebar from "../../sidebar/Sidebar";
@@ -7,15 +11,24 @@ import ProductDetailBottom from "./product-detail-bottom/ProductDetailBottom";
 import SliderNavImage from "./slider-nav-image/SliderNavImage";
 
 export default function ProductDetail() {
-    const imagePaths = 
-    [
-        'img/product-1.jpg',
-        'img/product-3.jpg',
-        'img/product-5.jpg',
-        'img/product-7.jpg',
-        'img/product-9.jpg',
-        'img/product-10.jpg'
-    ];
+    const { products, product, setProductId} = useContext(ProductContext);
+    const { productId } = useParams();
+
+    useEffect(() => {
+        setProductId(productId);
+        window. scrollTo(0, 0);
+    }, [products, productId])
+
+
+    // const imagePaths = 
+    // [
+    //     'img/product-1.jpg',
+    //     'img/product-3.jpg',
+    //     'img/product-5.jpg',
+    //     'img/product-7.jpg',
+    //     'img/product-9.jpg',
+    //     'img/product-10.jpg'
+    // ];
 
     const singleSliderSettings = {
         infinite: true,
@@ -82,23 +95,23 @@ export default function ProductDetail() {
                                 <div className="row align-items-center">
                                     <div className="col-md-5">
                                         <Slider className="product-slider-single normal-slider" {...singleSliderSettings} >
-                                        {imagePaths.map(image => 
-                                            <img key={image} src={image} alt="Product Image" />
+                                        {product && product.images.map(image => 
+                                            <img key={image} src={image.url} alt="Product Image" />
                                         )}
                                         </Slider>
-                                        <Slider className="product-slider-single-nav normal-slider" {...singleNavSliderSettings}>
+                                        {/* <Slider className="product-slider-single-nav normal-slider" {...singleNavSliderSettings}>
                                         {imagePaths.map(image => 
                                             <SliderNavImage key={image} imageSource={image} />
                                         )}
-                                        </Slider>
+                                        </Slider> */}
                                     </div>
-                                    <ProductContent />
+                                    {product && <ProductContent product={product} />}
                                 </div>
                             </div>
                         
-                        <ProductDetailBottom />
+                        {product && <ProductDetailBottom product={product} />}
                         
-                        <div className="product">
+                        {/* <div className="product">
                             <div className="section-header">
                                 <h1>Related Products</h1>
                             </div>
@@ -107,7 +120,7 @@ export default function ProductDetail() {
                                         <ProductItem key={image} image={image} />
                                     )}
                             </Slider>
-                        </div>
+                        </div> */}
                     </div>
                     <Sidebar />
                 </div>

@@ -9,9 +9,9 @@ export async function getAllProducts() {
 
 export async function getProduct(productId) {
     const response = await fetch(`${baseUrl}/${productId}`);
-    const regions =  await response.json();
+    const products =  await response.json();
 
-    return regions;
+    return products;
 }
 
 export async function addProduct(productData, modelId) {

@@ -2,7 +2,7 @@ import { useState, useEffect, useLayoutEffect } from "react";
 import { Helmet } from "react-helmet";
 import { Routes, Route, useLocation } from 'react-router-dom';
 
-import { ProductProvider } from "./contexts/ProductContext";
+import { ProductContext, ProductProvider } from "./contexts/ProductContext";
 
 import logo from './logo.svg';
 import './App.css';
@@ -21,9 +21,11 @@ import Login from "./components/pages/login/Login";
 import Contact from "./components/pages/contact/Contact";
 
 import * as productService from './services/productService';
+import { useContext } from "react";
 
 function App() {
     let location = useLocation();
+    
     useLayoutEffect(() => {
         const jqueryScript = document.createElement('jqueryScript');
         jqueryScript.src = "https://code.jquery.com/jquery-3.4.1.min.js";
@@ -74,7 +76,7 @@ function App() {
             <Routes>
                 <Route index path="/" element={<Home />} />
                 <Route path="/products" element={<Products />} />
-                <Route path="/product-detail" element={<ProductDetail />} />
+                <Route path="/product/:productId" element={<ProductDetail />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/checkout" element={<Checkout />} />
                 <Route path="/my-account" element={<MyAccount />} />
