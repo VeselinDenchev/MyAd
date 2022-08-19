@@ -1,16 +1,17 @@
-export default function InputText({name, label, value, type, inputChangeHandler, isWide}) {
+export default function InputText({name, label, value, type, inputChangeHandler, blurChangeHandler}) {
     return (
-        <div className={`col-md-${isWide ? '12' : '6'}`}>
-            <label htmlFor={name}>{label}</label>
-            <input 
-                id={name} 
-                name={name}
-                value={value}
-                type={type}
-                onChange={inputChangeHandler}
-                className="form-control" 
-                placeholder={label}
-            />
-        </div>
+        <>
+                    <label htmlFor={name}>{label}</label>
+                <input 
+                    id={name} 
+                    name={name}
+                    value={value}
+                    type={type}
+                    onChange={inputChangeHandler}
+                    onBlur={blurChangeHandler}
+                    className="form-control" 
+                    placeholder={label}
+                />
+        </>
     );
 }

@@ -17,7 +17,7 @@ export default function DropdownMenu({items}) {
             {items.map(item => 
                 item.name !== 'Logout' 
                 ? <NavLink key={item.name} to={item.link} className="dropdown-item">{item.name}</NavLink>
-                : <button type="button" onClick={logoutClickHandler} className="dropdown-item">Logout</button>
+                : <button key={item.name} type="button" onClick={logoutClickHandler} className="dropdown-item">Logout</button>
             )}
         </div>
     );

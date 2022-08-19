@@ -1,16 +1,19 @@
+import { useEffect } from "react";
 import { createContext, useContext } from "react";
+
 import { useLocalStorage } from "../hooks/useLocalStorage";
+import * as userService from '../services/userService'
 
 export const UserContext = createContext();
 
 export const UserProvider = ({
     children,
 }) => {
+
     const [auth, setAuth] = useLocalStorage('auth', {});
 
     const userLogin = (authData) => {
         setAuth(authData);
-        console.log(authData);
     };
 
     const userLogout = () => {
@@ -22,7 +25,7 @@ export const UserProvider = ({
             user: auth,
             userLogin,
             userLogout,
-            isAuthenticated: !!auth.accessToken
+            isAuthenticated: !!auth.accessToken,
         }}>
             {children}
         </UserContext.Provider>  

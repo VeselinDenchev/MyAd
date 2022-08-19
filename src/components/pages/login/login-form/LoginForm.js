@@ -32,9 +32,11 @@ export default function LoginForm() {
     function loginSubmitHandler(event) {
         event.preventDefault();
 
-        const formData = new FormData(event.target);
+        const formData = new FormData();
+        formData.append('email', loginForm.email);
+        formData.append('password', loginForm.password)
 
-        userService.loginUser(formData)
+        userService.login(formData)
             .then(authData => {
                 userLogin(authData);
                 navigate('/');

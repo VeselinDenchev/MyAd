@@ -12,10 +12,9 @@ export default function MyAccount() {
 
     useEffect(() => {
         if (!user.email) {
-            navigate('login');
+            navigate('/login');
         }
     }, [])
-
 
     return (
         <div className="my-account">

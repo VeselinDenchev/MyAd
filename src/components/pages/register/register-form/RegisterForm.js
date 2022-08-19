@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useContext, Fragment } from "react";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { UserContext } from "../../../../contexts/UserContext";
+
+import * as userService from '../../../../services/userService'
+
 import InputText from "../../../inputs/input-text/InputText";
 import SubmitButton from "../../../inputs/submit-button/SubmitButton";
 
 export default function RegisterForm() {
+    const navigate = useNavigate();
+
+    const [userEmails, setUserEmails] = useState([]);
+
     const [registerForm, setRegisterForm] = useState({
         firstName: '',
         lastName: '',
@@ -12,6 +22,18 @@ export default function RegisterForm() {
         password: '',
         retypePassword: '',
     });
+    
+    const [errors, setErrors] = useState({});
+
+    const [userExist, setUserExist] = useState(false);
+
+    useEffect(() => {
+        userService.getUserEmails()
+            .then(emails => setUserEmails(emails));
+    }, [])
+
+    const isError = Object.values(errors).some(e => e === true);
+    const isEmptyInput = Object.values(registerForm).some(i => i === '');
     
     const inputs = 
     [
@@ -24,25 +46,72 @@ export default function RegisterForm() {
         {name: 'retypePassword', label: 'Retype Password', value: registerForm.retypePassword, type: 'password'}
     ];
 
-    const inputChangeHandler = (event) => setRegisterForm({...registerForm, [event.target.name]: event.target.value});
+    function inputChangeHandler(event) {
+        setRegisterForm({...registerForm, [event.target.name]: event.target.value});
+    }
+
+    const minLength = (e, bound) => {
+        setErrors(state => ({
+            ...state,
+            [e.target.name]: registerForm[e.target.name].length < bound,
+        }));
+    }
+
+    function emailBlurHandler(event) {
+        if (userEmails.some(e => e === event.target.value)) {
+            console.log(true);
+            setErrors({...errors, email: true});
+            setUserExist(true);
+        }
+        else {
+            if (event.target.value.length > 3) {
+                setErrors({...errors, email: undefined});
+
+            }
+
+            setUserExist(false)
+        }
+    }
+
+    function registerSubmitHandler(event) {
+        event.preventDefault();
+
+        const formData = new FormData();
+        formData.append('firstName', registerForm.firstName);
+        formData.append('lastName', registerForm.lastName);
+        formData.append('email', registerForm.email);
+        formData.append('phoneNumber', registerForm.mobileNumber);
+        formData.append('address', registerForm.address);
+        formData.append('password', registerForm.password);
+
+        userService.register(formData)
+            .then(navigate('/login'))
+            .catch(error => console.log(error));
+
+        setUserEmails([...userEmails, registerForm.email]);
+    }
 
     return (
         <div className="col-lg-6" style={{margin: '0 auto'}}> 
-            <div className="register-form">
-                <div className="row">
+            <form onSubmit={registerSubmitHandler} className="register-form">
                     {inputs.map(input =>
+                    <div key={input.name} style={{marginBottom: "2em"}}>
                         <InputText 
-                            key={input.name}
                             {...input} 
-                            isWide={input.name === 'address'} 
-                            inputChangeHandler={inputChangeHandler} 
+                            isWide={true} 
+                            inputChangeHandler={inputChangeHandler}
+                            blurChangeHandler={input.name !== 'email' ? (e => minLength(e, 3)) : emailBlurHandler}
                         />
+                        {errors[input.name] 
+                        ? (input.name === 'email' && userExist) ? <div className="text-danger" style={{marginLeft: '1em'}}>User with such email already exists</div> 
+                                    :<div className="text-danger" style={{marginLeft: '1em'}}>{input.label} must be longer than 3 characters</div>
+                        : ''}
+                    </div>
                     )}
-                </div>
                 <div className="row">
-                    <SubmitButton>Register</SubmitButton>
+                    <SubmitButton disabled={isError || isEmptyInput}>Register</SubmitButton>
                 </div>
-            </div>
+            </form>
         </div>
     );
 }
