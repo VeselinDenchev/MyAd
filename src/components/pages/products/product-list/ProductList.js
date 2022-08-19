@@ -16,21 +16,24 @@ export default function ProductList() {
     const [criteria, setCriteria] = useState('name');
     const [search, setSearch] = useState('');
 
-    const productsPerPage = 1;
-
+    const productsPerPage = 6;
     const [currentPage, setCurrentPage] = useState(1);
     const [offset, setOffset] = useState(0);
     const [pagesCount, setPagesCount] = useState(Math.ceil(filteredProducts.length / productsPerPage));
     const [currentPageData, setCurrentPageData] = useState(filteredProducts.slice(offset, offset + productsPerPage));
 
     useEffect(() => {
-        setCurrentPageData(filteredProducts.slice(offset, offset + productsPerPage));
-        console.log(pagesCount);
-    }, [currentPage, filteredProducts])
+        setPagesCount(Math.ceil(filteredProducts.length / productsPerPage));
+    }, [filteredProducts.length]);
+    
+    useEffect(() => {
+        setOffset((currentPage - 1) * productsPerPage);
+
+    }, [currentPage, filteredProducts, products]);
 
     useEffect(() => {
-        setPagesCount(Math.ceil(filteredProducts.length / productsPerPage));
-    }, [filteredProducts.length])
+        setCurrentPageData(filteredProducts.slice(offset, offset + productsPerPage));
+    }, [products, offset])
 
     useEffect(() => {
         if (searchParams.get('productName')) {

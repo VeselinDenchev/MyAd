@@ -9,7 +9,7 @@ export default function Pagination({currentPage, setCurrentPage, pagesCount, off
         const pages = [{isActive: false, content: 'Previous'}];
 
             if (pagesCount < 5) {
-                for (let index = 1; index < pagesCount + 1; index++) {
+                for (let index = 1; index < pagesCount + 2; index++) {
                     pages[index] = {isActive: index === currentPage, content: `${index}`}
                 }
             }
