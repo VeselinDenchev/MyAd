@@ -100,6 +100,8 @@ export function ProductProvider({children}) {
 
     function filterProductsByBrand(brandName) {
         setFilteredProducts(products.filter(p => p.model.brand.name === brandName));
+
+        console.log(filteredProducts);
     }
 
     const filterProductsByCategory = (categoryName) => {

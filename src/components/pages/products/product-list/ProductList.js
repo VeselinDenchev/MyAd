@@ -28,12 +28,18 @@ export default function ProductList() {
     
     useEffect(() => {
         setOffset((currentPage - 1) * productsPerPage);
-
     }, [currentPage, filteredProducts, products]);
 
     useEffect(() => {
-        setCurrentPageData(filteredProducts.slice(offset, offset + productsPerPage));
-    }, [products, offset])
+        if (products.length > 0) {
+            console.log(filteredProducts);
+            setCurrentPageData(filteredProducts.slice(offset, offset + productsPerPage));
+        }
+    }, [products, filteredProducts, offset])
+
+    useEffect(() => {
+         window.scrollTo(0, 0);  
+    }, [searchParams.get('brandName')])
 
     useEffect(() => {
         if (searchParams.get('productName')) {

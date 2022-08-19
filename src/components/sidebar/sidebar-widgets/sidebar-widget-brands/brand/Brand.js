@@ -1,10 +1,12 @@
 import { useEffect } from "react";
 import { useContext } from "react";
-import { useSearchParams } from "react-router-dom";
+import { useLocation, useSearchParams, Link } from "react-router-dom";
 import { ProductContext } from "../../../../../contexts/ProductContext";
 
 export default function Brand({brand}) {
     const { filterProductsByBrand } = useContext(ProductContext);
+
+    const location = useLocation();
 
     const [searchParams, setSearchParams] = useSearchParams();
 
@@ -23,8 +25,10 @@ export default function Brand({brand}) {
     }
 
     return (
-        <>
-            <li><a onClick={brandClickHandler} href="#">{brand.name}</a><span>({brand.productsCount})</span></li>
-        </>
+        <li>
+            {location.pathname.includes('/products') 
+            ? <><a onClick={brandClickHandler} href="#">{brand.name}</a><span>({brand.productsCount})</span></>
+            : <><Link to={`/products?brandName=${brand.name}`}>{brand.name}</Link><span>({brand.productsCount})</span></>}
+        </li>
     );
 }

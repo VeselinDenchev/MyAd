@@ -6,13 +6,14 @@ import ProductPrice from "./product-price/ProductPrice";
 
 export default function ProductItem({product}) {
     return (
-        <div className="product-item">
-            <div className="product-title">
-                <Link to={`/product/${product.id}`}>{product.name}</Link>
-                <Rating rating={product.rating} />
+        <Link to={`/product/${product.id}`}>
+            <div className="product-item">
+                <div className="product-title">
+                    <a href={`/product/${product.id}`}>{product.name}</a>                   <Rating rating={product.rating} />
+                </div>
+                <ProductImage image={product.images[0]} />
+                <ProductPrice price={product.price} />
             </div>
-            <ProductImage image={product.images[0]} />
-            <ProductPrice price={product.price} />
-        </div>
+        </Link>
     );
 }

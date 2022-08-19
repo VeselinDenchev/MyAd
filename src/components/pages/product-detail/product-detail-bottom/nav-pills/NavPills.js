@@ -9,7 +9,7 @@ export default function NavPills() {
                 <a className="nav-link active" data-toggle="pill" href="#description">Description</a>
             </li>
             <li className="nav-item">
-                <a className="nav-link" data-toggle="pill" href="#specification">Specification</a>
+                <a className="nav-link" data-toggle="pill" href="#specification">Specifications</a>
             </li>
             <li className="nav-item">
                 <a className="nav-link" data-toggle="pill" href="#reviews">Reviews ({reviewsCount})</a>

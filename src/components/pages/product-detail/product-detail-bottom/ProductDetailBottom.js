@@ -1,9 +1,22 @@
+import { useState, useEffect } from "react";
 import Description from "./description/Description";
 import NavPills from "./nav-pills/NavPills";
 import Reviews from "./reviews/Reviews";
 import Specification from "./specification/Specification";
 
 export default function ProductDetailBottom({product}) {
+    const [specifications, setSpecifications] = useState(null)
+
+    useEffect(() => {
+        setSpecifications({
+            processor: product.processor,
+            ram: product.ram,
+            gpu: product.gpu,
+            storage: product.storage,
+            display: product.display
+        })
+    }, [product.id])
+
     return (
         <div className="row product-detail-bottom">
             <div className="col-lg-12">
@@ -22,7 +35,7 @@ export default function ProductDetailBottom({product}) {
 
                 <div className="tab-content">
                     <Description description={product.description} />
-                    {/* <Specification specifications={product.specifications} /> */}
+                    {specifications && <Specification specifications={specifications} />}
                     {/* <Reviews reviews={product.reviews} /> */}
                 </div>
             </div>
