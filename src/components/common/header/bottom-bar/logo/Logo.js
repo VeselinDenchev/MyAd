@@ -4,7 +4,7 @@ export default function Logo() {
     return (
         <div className="col-md-3">
             <div className="logo">
-                <Link to="index.html">
+                <Link to="/">
                     <img src="img/logo.png" alt="Logo" />
                 </Link>
             </div>

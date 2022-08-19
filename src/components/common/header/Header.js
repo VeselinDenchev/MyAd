@@ -38,7 +38,7 @@ export default function Header() {
 
     return (
         <header>
-            <TopBar />
+            {/* <TopBar /> */}
             <NavBar />
             <BottomBar />
             {/* {!isHomePage ? <Breadcrumb links={links} /> : <></> } */}

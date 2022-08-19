@@ -22,6 +22,8 @@ import Contact from "./components/pages/contact/Contact";
 
 import * as productService from './services/productService';
 import { useContext } from "react";
+import Register from "./components/pages/register/Register";
+import { UserProvider } from "./contexts/UserContext";
 
 function App() {
     let location = useLocation();
@@ -70,25 +72,38 @@ function App() {
             <script src="js/main.js" type="text/javascript" defer></script>
         </Helmet>
 
-        <Header />
-
+        
         <ProductProvider>
-            <Routes>
-                <Route index path="/" element={<Home />} />
-                <Route path="/products" element={<Products />} />
-                <Route path="/product/:productId" element={<ProductDetail />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/checkout" element={<Checkout />} />
-                <Route path="/my-account" element={<MyAccount />} />
-                <Route path="/wishlist" element={<Wishlist />} />
-                <Route path="/login" element={<Login />} />
-                <Route path="/contact" element={<Contact />} />
-            </Routes>
+
+            <UserProvider>
+
+                <Header />
+
+
+                        <Routes>
+                                <Route index path="/" element={<Home />} />
+                                <Route path="/products" element={<Products />} />
+                                <Route path="/product/:productId" element={<ProductDetail />} />
+                                <Route path="/cart" element={<Cart />} />
+                                <Route path="/checkout" element={<Checkout />} />
+                                <Route path="/my-account" element={<MyAccount />} />
+                                {/* <Route path="/wishlist" element={<Wishlist />} /> */}
+                                <Route path="/login" element={<Login />} />
+                                <Route path="/register" element={<Register />} />
+                                {/* <Route path="/contact" element={<Contact />} /> */}
+                            </Routes>
+
+
+
+
+
+                <Footer />
+
+                <BackToTop />
+
+            </UserProvider>
+
         </ProductProvider>
-
-        <Footer />
-
-        <BackToTop />
     </>    
   );
 }
