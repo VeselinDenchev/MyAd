@@ -1,7 +1,9 @@
+import { useContext } from "react";
+import { OrderContext } from "../../../../../contexts/OrderContext";
 import Order from "./order/Order";
 
 export default function OrdersTab() {
-    const orderNumbers = [1, 2, 3]
+    const { orders } = useContext(OrderContext);
 
     return (
         <div className="tab-pane fade show active" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
@@ -9,8 +11,6 @@ export default function OrdersTab() {
                 <table className="table table-bordered">
                     <thead className="thead-dark">
                         <tr>
-                            <th>No</th>
-                            <th>Product</th>
                             <th>Date</th>
                             <th>Price</th>
                             <th>Status</th>
@@ -18,8 +18,8 @@ export default function OrdersTab() {
                         </tr>
                     </thead>
                     <tbody>
-                    {orderNumbers.map(number =>
-                        <Order key={number} number={number} />
+                    {orders.map(order =>
+                        <Order key={order.id} order={order} />
                     )}
                     </tbody>
                 </table>

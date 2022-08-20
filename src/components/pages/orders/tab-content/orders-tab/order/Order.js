@@ -1,12 +1,17 @@
-export default function Order({number}) {
+import { Link } from "react-router-dom";
+
+export default function Order({order}) {
+
     return (
         <tr>
-            <td>{number}</td>
-            <td>Product Name</td>
-            <td>01 Jan 2020</td>
-            <td>$99</td>
-            <td>Approved</td>
-            <td><button className="btn">View</button></td>
+            <td>{order.createdAtString}</td>
+            <td>${order.grandTotal}</td>
+            <td>{order.status}</td>
+            <td>
+                <Link to={`/order/${order.id}`}>
+                    <button className="btn">View</button>
+                </Link>
+            </td>
         </tr>
     );
 }

@@ -1,5 +1,6 @@
 import { useState, useContext, useEffect, createContext } from "react";
 import { CartContext } from "./CartContext";
+import { UserContext } from "./UserContext";
 
 export const CheckoutContext = createContext();
 
@@ -10,6 +11,16 @@ export const CheckoutProvider = ({
 
     const [shippingCost, setShippingCost] = useState(5);
     const [grandTotal, setGrandTotal] = useState(subTotal);
+
+    const { user } = useContext(UserContext);
+
+    const [checkoutForm, setCheckoutForm] = useState({
+        firstName: user.firstName,
+        lastName: user.lastName,
+        email: user.email,
+        mobileNumber: user.mobileNumber,
+        address: user.address,
+    });
 
     useEffect(() => {
         if (subTotal > 1_000) {
@@ -29,7 +40,9 @@ export const CheckoutProvider = ({
     return (
         <CheckoutContext.Provider value={{
             shippingCost,
-            grandTotal
+            grandTotal,
+            checkoutForm,
+            setCheckoutForm,
         }}>
             {children}
         </CheckoutContext.Provider>  

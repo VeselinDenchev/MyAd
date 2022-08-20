@@ -1,9 +1,12 @@
 import { useContext, useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import { CartContext } from "../../../../contexts/CartContext";
 import Quantity from "../../quantity/Quantity";
 import Image from "./image/Image";
 
 export default function TableRow({product, quantity}) {
+    const location = useLocation();
+
     const { cart, setCart, addToCart, removeFromCart } = useContext(CartContext);
 
     const [newQuantity, setNewQuantity] = useState(quantity.toString());
@@ -26,14 +29,19 @@ export default function TableRow({product, quantity}) {
     return (
         <>
             <td>
-                <Image image={product.images[0].url} />
+                <Image product={product} />
             </td>
             <td>${product.price.toFixed(2)}</td>
             <td>
-                <Quantity quantity={newQuantity} setQuantity={setNewQuantity} />
+                {
+                    location.pathname === '/cart' 
+                    ? <Quantity quantity={newQuantity} setQuantity={setNewQuantity} />
+                    : quantity
+                }
+
             </td>
             <td>${(product.price * parseInt(newQuantity)).toFixed(2)}</td>
-            <td><button onClick={removeClickHandler}><i className="fa fa-trash"></i></button></td>
+            {location.pathname === '/cart' && <td><button onClick={removeClickHandler}><i className="fa fa-trash"></i></button></td>}
         </>
     );
 }

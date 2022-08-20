@@ -1,7 +1,7 @@
-export default function CheckoutButton() {
+export default function CheckoutButton({children}) {
     return (
         <div className="checkout-btn">
-            <button>Place Order</button>
+            <button>{children}</button>
         </div>
     );
 }

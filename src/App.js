@@ -22,6 +22,8 @@ import { UserProvider } from "./contexts/UserContext";
 import Orders from "./components/pages/orders/Orders";
 import { CartProvider } from "./contexts/CartContext";
 import { CheckoutProvider } from "./contexts/CheckoutContext";
+import { OrderProvider } from "./contexts/OrderContext";
+import OrderView from "./components/pages/order-view/OrderView";
 
 function App() {
     let location = useLocation();
@@ -47,9 +49,6 @@ function App() {
         mainScript.defer = true;
         document.body.appendChild(mainScript);
 
-        console.log(location.pathname);
-
-
         return () => {
             document.body.removeChild(jqueryScript);
             document.body.removeChild(bootstrapScript);
@@ -66,27 +65,31 @@ function App() {
         
         <ProductProvider>
             <CartProvider>
-                <CheckoutProvider>
-                    <UserProvider>
+                <UserProvider>
+                    <CheckoutProvider>
+                        <OrderProvider>
 
-                        <Header />
+                            <Header />
 
-                        <Routes>
-                                <Route index path="/" element={<Home />} />
-                                <Route path="/products" element={<Products />} />
-                                <Route path="/product/:productId" element={<ProductDetail />} />
-                                <Route path="/cart" element={<Cart />} />
-                                <Route path="/checkout" element={<Checkout />} />
-                                <Route path="/orders" element={<Orders />} />
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/register" element={<Register />} />
-                            </Routes>
+                            <Routes>
+                                    <Route index path="/" element={<Home />} />
+                                    <Route path="/products" element={<Products />} />
+                                    <Route path="/product/:productId" element={<ProductDetail />} />
+                                    <Route path="/cart" element={<Cart />} />
+                                    <Route path="/checkout" element={<Checkout />} />
+                                    <Route path="/orders" element={<Orders />} />
+                                    <Route path="/order/:orderId" element={<OrderView />} />
+                                    <Route path="/login" element={<Login />} />
+                                    <Route path="/register" element={<Register />} />
+                                </Routes>
 
-                        <Footer />
-                        <BackToTop />
+                            <Footer />
+                            <BackToTop />
 
-                    </UserProvider>
-                </CheckoutProvider>
+
+                        </OrderProvider>
+                    </CheckoutProvider>
+                </UserProvider>
             </CartProvider>
         </ProductProvider>
     </>    

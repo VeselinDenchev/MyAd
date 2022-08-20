@@ -1,19 +1,12 @@
 import { useContext, useEffect, useState } from "react";
+import { CheckoutContext } from "../../../../contexts/CheckoutContext";
 import { UserContext } from "../../../../contexts/UserContext";
 import InputText from "../../../inputs/input-text/InputText";
 
 export default function AddressForm() {
-    const { user } = useContext(UserContext);
-
-    const [checkoutForm, setCheckoutForm] = useState({
-        firstName: user.firstName,
-        lastName: user.lastName,
-        email: user.email,
-        mobileNumber: user.mobileNumber,
-        address: user.address,
-    });
-
     const [errors, setErrors] = useState({});
+
+    const {checkoutForm, setCheckoutForm} = useContext(CheckoutContext);
     
     const inputChangeHandler = (event) => setCheckoutForm({...checkoutForm, [event.target.name]: event.target.value});
 
@@ -34,7 +27,7 @@ export default function AddressForm() {
     ];
 
     return (
-        <form>
+        <>
             {inputTexts.map(input => 
                 <div key={input.name} className="col-md-10">
                     <InputText 
@@ -44,8 +37,8 @@ export default function AddressForm() {
                         blurChangeHandler={e => minLength(e, 4)} 
                     />
                     {errors[input.name] && <div className="text-danger" style={{marginLeft: '1em'}}>{input.label} must be longer than 4 characters</div>}
-                </div>
+            </div>
             )}
-        </form>
+        </>
     );
 }

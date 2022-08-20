@@ -40,7 +40,9 @@ export function ProductProvider({children}) {
         }
 
         setPreviousLocationPathName(location.pathname);
-    }, [location.pathname])
+    }, [location.pathname]);
+
+    const getProductById = (productId) => [...products.filter(p => p.id === productId)][0];
 
     function searchProducts(searchedText = '', criteria = 'name') {
         if (searchedText === '') {
@@ -111,7 +113,8 @@ export function ProductProvider({children}) {
         <ProductContext.Provider 
             value={{
                 products,
-                filteredProducts, 
+                filteredProducts,
+                getProductById,
                 searchProducts, 
                 sortProducts, 
                 filterProductsByPrice, 
