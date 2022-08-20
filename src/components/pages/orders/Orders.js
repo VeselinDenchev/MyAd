@@ -5,7 +5,7 @@ import { UserContext } from "../../../contexts/UserContext";
 import NavPills from "./nav-pills/NavPills";
 import TabContent from "./tab-content/TabContent";
 
-export default function MyAccount() {
+export default function Orders() {
     const { user } = useContext(UserContext);
 
     const navigate = useNavigate();
@@ -20,7 +20,7 @@ export default function MyAccount() {
         <div className="my-account">
             <div className="container-fluid">
                 <div className="row">
-                    <NavPills />
+                    {/* <NavPills /> */}
                     <TabContent />
                 </div>
             </div>

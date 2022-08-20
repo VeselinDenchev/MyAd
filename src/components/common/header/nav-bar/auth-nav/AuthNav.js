@@ -20,7 +20,7 @@ export default function AuthNav() {
 
     const items = authNavHeader === 'Login/Register'
                     ? [{name: 'Login', link: '/login'}, {name: 'Register', link: '/register'}]
-                    : [{name: 'My account', link: '/my-account'}, {name: 'Logout', link: '/'}];
+                    : [{name: 'Orders', link: '/orders'}, {name: 'Logout', link: '/'}];
 
     return (
         <div className="navbar-nav ml-auto">

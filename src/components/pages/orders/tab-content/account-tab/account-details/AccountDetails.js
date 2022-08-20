@@ -28,7 +28,9 @@ export default function AccountDetails() {
             <h4>Account Details</h4>
             <div className="row">
                 {inputTexts.map(inputText =>
-                    <InputText key={inputText.name} {...inputText} type='text' inputChangeHandler={inputChangeHandler} />
+                    <div key={inputText.name} className={`col-md-${inputText.name !== 'address' ? 6 : 12}`}>
+                        <InputText {...inputText} type='text' inputChangeHandler={inputChangeHandler} />
+                    </div>
                 )}
                 <UpdateButton text="Update Account" />
             </div>

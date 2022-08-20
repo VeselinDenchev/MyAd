@@ -25,9 +25,6 @@ export default function ProductDetail() {
         if (product) {
             setRelatedProducts([...products.filter(p => p.model.brand.id === product.model.brand.id || p.model.category.id === product.model.category.id)]);
         }
-
-        console.log(products);
-        console.log(relatedProducts);
     }, [product])
 
 

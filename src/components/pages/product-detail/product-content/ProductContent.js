@@ -1,20 +1,20 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import Rating from "../../../product/rating/Rating";
-import Action from "./action/Action";
+import AddToCart from "./add-to-cart/AddToCart";
 import Color from "./color/Color";
 import Price from "./price/Price";
 import Quantity from "../../../product/quantity/Quantity";
 import Size from "./size/Size";
+import { CartContext } from "../../../../contexts/CartContext";
 
 export default function ProductContent({product}) {
-    // const [productVariant, setProductVariant] = useState({
-    //     size: '',
-    //     color: ''
-    // });
+    const { addToCart } = useContext(CartContext);
 
-    // useEffect(() => {
-    //     console.log(productVariant);
-    // }, [productVariant.size, productVariant.color]);
+    const [quantity, setQuantity] = useState('1');
+
+    function addToCartClickHandler() {
+        addToCart(product.id, parseInt(quantity));
+    }
 
     return (
         <div className="col-md-7">
@@ -24,11 +24,11 @@ export default function ProductContent({product}) {
                 <Price price={product.price} />
                 <div className="quantity">
                     <h4>Quantity:</h4>
-                    <Quantity />
+                    <Quantity quantity={quantity} setQuantity={setQuantity} />
                 </div>
                 {/* <Size setSize={setProductVariant} />
                 <Color setColor={setProductVariant} /> */}
-                <Action />
+                <AddToCart addToCartClickHandler={addToCartClickHandler} />
             </div>
         </div>
     );

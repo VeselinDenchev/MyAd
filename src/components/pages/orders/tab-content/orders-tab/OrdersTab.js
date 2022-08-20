@@ -4,7 +4,7 @@ export default function OrdersTab() {
     const orderNumbers = [1, 2, 3]
 
     return (
-        <div className="tab-pane fade" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
+        <div className="tab-pane fade show active" id="orders-tab" role="tabpanel" aria-labelledby="orders-nav">
             <div className="table-responsive">
                 <table className="table table-bordered">
                     <thead className="thead-dark">

@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { createContext, useContext } from "react";
 
 import { useLocalStorage } from "../hooks/useLocalStorage";
-import * as userService from '../services/userService'
+import { CartContext } from "./CartContext";
 
 export const UserContext = createContext();
 
@@ -12,11 +12,14 @@ export const UserProvider = ({
 
     const [auth, setAuth] = useLocalStorage('auth', {});
 
+    const { clearCart } = useContext(CartContext);
+
     const userLogin = (authData) => {
         setAuth(authData);
     };
 
     const userLogout = () => {
+        clearCart();
         setAuth({});
     };
 

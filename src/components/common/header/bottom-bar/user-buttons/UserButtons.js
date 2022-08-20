@@ -1,20 +1,15 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CartContext } from "../../../../../contexts/CartContext";
 
-import UserButton from "./user-button/UserButton";
+import CartButton from "./cart-button/CartButton";
 
 export default function UserButtons() {
-    const [userButtons, setUserButtons] = useState(
-    [
-        //{destination: 'wishlist', iconClassName: 'fa fa-heart'},
-        {destination: 'cart', iconClassName: 'fa fa-shopping-cart'}
-    ]);
+    const { cart } = useContext(CartContext);
 
     return (
         <div className="col-md-9">
             <div className="user">
-                {userButtons.map(button =>
-                    <UserButton key={button.destination} {...button} />
-                )}
+                <CartButton cartItemsCount={cart.length} />
             </div>
         </div>
     );

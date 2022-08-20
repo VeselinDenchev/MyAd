@@ -15,7 +15,6 @@ import Products from "./components/pages/products/Products";
 import ProductDetail from "./components/pages/product-detail/ProductDetail";
 import Cart from "./components/pages/cart/Cart";
 import Checkout from "./components/pages/checkout/Checkout";
-import MyAccount from "./components/pages/my-account/MyAccount";
 import Wishlist from "./components/pages/wishlist/Wishlist";
 import Login from "./components/pages/login/Login";
 import Contact from "./components/pages/contact/Contact";
@@ -24,6 +23,8 @@ import * as productService from './services/productService';
 import { useContext } from "react";
 import Register from "./components/pages/register/Register";
 import { UserProvider } from "./contexts/UserContext";
+import Orders from "./components/pages/orders/Orders";
+import { CartProvider } from "./contexts/CartContext";
 
 function App() {
     let location = useLocation();
@@ -71,37 +72,35 @@ function App() {
         <Helmet>
             <script src="js/main.js" type="text/javascript" defer></script>
         </Helmet>
-
         
         <ProductProvider>
 
+
+        <CartProvider>
+
             <UserProvider>
 
-                <Header />
+                    <Header />
 
+                    <Routes>
+                            <Route index path="/" element={<Home />} />
+                            <Route path="/products" element={<Products />} />
+                            <Route path="/product/:productId" element={<ProductDetail />} />
+                            <Route path="/cart" element={<Cart />} />
+                            <Route path="/checkout" element={<Checkout />} />
+                            <Route path="/orders" element={<Orders />} />
+                            {/* <Route path="/wishlist" element={<Wishlist />} /> */}
+                            <Route path="/login" element={<Login />} />
+                            <Route path="/register" element={<Register />} />
+                            {/* <Route path="/contact" element={<Contact />} /> */}
+                        </Routes>
 
-                        <Routes>
-                                <Route index path="/" element={<Home />} />
-                                <Route path="/products" element={<Products />} />
-                                <Route path="/product/:productId" element={<ProductDetail />} />
-                                <Route path="/cart" element={<Cart />} />
-                                <Route path="/checkout" element={<Checkout />} />
-                                <Route path="/my-account" element={<MyAccount />} />
-                                {/* <Route path="/wishlist" element={<Wishlist />} /> */}
-                                <Route path="/login" element={<Login />} />
-                                <Route path="/register" element={<Register />} />
-                                {/* <Route path="/contact" element={<Contact />} /> */}
-                            </Routes>
+                    <Footer />
+                    <BackToTop />
 
+                </UserProvider>
 
-
-
-
-                <Footer />
-
-                <BackToTop />
-
-            </UserProvider>
+        </CartProvider>
 
         </ProductProvider>
     </>    

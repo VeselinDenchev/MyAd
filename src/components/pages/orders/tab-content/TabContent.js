@@ -6,13 +6,10 @@ import PaymentTab from "./payment-tab/PaymenTab";
 
 export default function TabContent() {
     return (
-        <div className="col-md-9">
+        <div className="col-md-12">
             <div className="tab-content">
-                <DashboardTab />
                 <OrdersTab />
-                <PaymentTab />
-                <AddressTab />
-                <AccountTab />
+                {/* <AccountTab /> */}
             </div>
     </div>
     );

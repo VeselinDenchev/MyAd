@@ -6,7 +6,7 @@ export default function PreCheckout() {
         <div className="col-lg-4">
             <div className="cart-page-inner">
                 <div className="row">
-                    <Coupon />
+                    {/* <Coupon /> */}
                     <CartSummary />
                 </div>
             </div>
