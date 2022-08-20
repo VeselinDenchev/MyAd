@@ -101,11 +101,11 @@ export default function RegisterForm() {
                             {...input} 
                             isWide={true} 
                             inputChangeHandler={inputChangeHandler}
-                            blurChangeHandler={input.name !== 'email' ? (e => minLength(e, 3)) : emailBlurHandler}
+                            blurChangeHandler={input.name !== 'email' ? (e => minLength(e, 4)) : emailBlurHandler}
                         />
                         {errors[input.name] 
                         ? (input.name === 'email' && userExist) ? <div className="text-danger" style={{marginLeft: '1em'}}>User with such email already exists</div> 
-                                    :<div className="text-danger" style={{marginLeft: '1em'}}>{input.label} must be longer than 3 characters</div>
+                                    :<div className="text-danger" style={{marginLeft: '1em'}}>{input.label} must be longer than 4 characters</div>
                         : ''}
                     </div>
                     )}

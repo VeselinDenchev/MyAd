@@ -1,8 +1,6 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { useLayoutEffect } from "react";
 import { createContext, useContext } from "react";
-import ProductContent from "../components/pages/product-detail/product-content/ProductContent";
 
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import * as userService from '../services/userService'

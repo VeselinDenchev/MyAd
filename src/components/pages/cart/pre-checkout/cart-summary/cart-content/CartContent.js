@@ -1,26 +1,12 @@
-import { useState, useEffect } from "react";
 import { useContext } from "react";
+
 import { CartContext } from "../../../../../../contexts/CartContext";
+import { CheckoutContext } from "../../../../../../contexts/CheckoutContext";
 
 export default function CartContent() {
     const { subTotal } = useContext(CartContext);
-    const [shippingCost, setShippingCost] = useState(5);
-    const [grandTotal, setGrandTotal] = useState(subTotal);
 
-    useEffect(() => {
-        if (subTotal > 1_000) {
-            setShippingCost(0);
-        }
-        else {
-            setShippingCost(5);
-        }
-    }, [subTotal]);
-
-    useEffect(() => {
-        if (subTotal > 0) {
-            setGrandTotal((Math.round((subTotal + shippingCost) * 100) / 100).toFixed(2)); 
-        }
-    }, [subTotal, shippingCost])
+    const { shippingCost, grandTotal } = useContext(CheckoutContext);
 
     return (
         <div className="cart-content">

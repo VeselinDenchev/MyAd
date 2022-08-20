@@ -1,12 +1,10 @@
 import AddressForm from "../address-form/AddressForm";
 
-export default function ShippingAddress({checkoutForm, setCheckoutForm}) {
+export default function ShippingAddress() {
     return (
-        <div className="shipping-address">
+        <div className="billing-address">
             <h2>Shipping Address</h2>
-            <div className="row">
-                <AddressForm setCheckoutForm={setCheckoutForm} outerAddressForm={checkoutForm.shippingAddress} />
-            </div>
+            <AddressForm />
         </div>
     );
 }
