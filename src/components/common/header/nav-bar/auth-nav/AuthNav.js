@@ -11,7 +11,7 @@ export default function AuthNav() {
 
     useEffect(() => {
         if (user?.email) {
-            setAuthNavHeader(user.email);
+            setAuthNavHeader(`${user.firstName} ${user.lastName}`);
         }
         else {
             setAuthNavHeader('Login/Register');

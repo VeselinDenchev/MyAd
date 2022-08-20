@@ -59,17 +59,18 @@ export default function RegisterForm() {
 
     function emailBlurHandler(event) {
         if (userEmails.some(e => e === event.target.value)) {
-            console.log(true);
             setErrors({...errors, email: true});
             setUserExist(true);
         }
         else {
             if (event.target.value.length > 3) {
                 setErrors({...errors, email: undefined});
-
+            }
+            else {
+                setErrors({...errors, email: true});
             }
 
-            setUserExist(false)
+            setUserExist(false);
         }
     }
 

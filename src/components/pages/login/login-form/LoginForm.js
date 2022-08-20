@@ -16,8 +16,9 @@ export default function LoginForm() {
     const [loginForm, setLoginForm] = useState({
         email: '',
         password: '',
-        // willBeKeptSignedIn: false
     });
+
+    const [isValidUserData, setIsValidUserData] = useState(true);
 
     const inputs = 
     [
@@ -25,9 +26,9 @@ export default function LoginForm() {
         {name: 'password', label: 'Password', value: loginForm.password, type: 'password'}
     ];
 
-    // const checkbox = {name: 'willBeKeptSignedIn', label: 'Keep me signed in'};
-
     const inputChangeHandler = (event) => setLoginForm({...loginForm, [event.target.name]: event.target.value});
+    
+    const inputClickHandler = () => setIsValidUserData(true);
 
     function loginSubmitHandler(event) {
         event.preventDefault();
@@ -41,7 +42,10 @@ export default function LoginForm() {
                 userLogin(authData);
                 navigate('/');
             })
-            .catch(error => console.log(error));
+            .catch(error => {
+                console.log(error);
+                setIsValidUserData(false);
+            });
     }
 
     return (
@@ -49,13 +53,19 @@ export default function LoginForm() {
             <div className="login-form">
                     {inputs.map(input =>
                         <div key={input.name} className="row">
-                            <InputText {...input} isWide={true} inputChangeHandler={inputChangeHandler} />
+                            <InputText {...input} isWide={true} inputChangeHandler={inputChangeHandler} inputClickHandler={inputClickHandler} />
                         </div>
                     )}
                     {/* <InputCheckbox form={loginForm} setForm={setLoginForm} checkbox={checkbox} /> */}
                     <div className="row">
                         <SubmitButton>Login</SubmitButton>
                     </div>
+                    {
+                        !isValidUserData &&
+                        <div className="row">
+                            <div className="text-danger" style={{marginLeft: '1em'}}>Invalid email or password</div>
+                        </div>
+                    }
             </div>
         </form>
 
