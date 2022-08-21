@@ -4,19 +4,6 @@ import AuthNav from "./auth-nav/AuthNav";
 import MainNav from "./main-nav/MainNav";
 
 export default function NavBar() {
-    // const mainNavDropdownItems = 
-    // [
-    //     //{name: 'Wishlist', link: '/wishlist'}, 
-    //     {name: 'Login & Register', link: '/login'},
-    //     {name: 'Contact Us', link: '/contact'} 
-    // ];
-
-    const authNavDropdownItems = 
-    [
-        {name: 'Login', link: '/login'},
-        {name: 'Register', link: '/register'} 
-    ];
-
     return (
         <div className="nav">
             <div className="container-fluid">

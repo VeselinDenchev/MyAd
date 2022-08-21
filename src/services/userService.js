@@ -2,9 +2,9 @@ const baseUrl = 'https://localhost:7282/api/account';
 
 export async function getUserEmails() {
     const response = await fetch(`${baseUrl}/getUserEmails`);
-    const products =  await response.json();
+    const emails =  await response.json();
 
-    return products;
+    return emails;
 }
 
 export async function login(userData) {

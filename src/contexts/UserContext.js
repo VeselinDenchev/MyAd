@@ -3,6 +3,7 @@ import { createContext, useContext } from "react";
 
 import { useLocalStorage } from "../hooks/useLocalStorage";
 import { CartContext } from "./CartContext";
+import { OrderContext } from "./OrderContext";
 
 export const UserContext = createContext();
 

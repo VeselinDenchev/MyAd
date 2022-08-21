@@ -12,10 +12,11 @@ export default function ProductDetailBottom({product}) {
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
+        if (product.id)
         reviewService.getAllProductReviews(product.id)
             .then(reviews => setReviews(reviews.sort((a, b) => new Date(b.createdAtUtc) - new Date(a.createdAtUtc))))
-            .catch(console.log("Can't fetch reviews"));
-    }, [])
+            .catch(error => console.log("Can't fetch reviews"));
+    }, [product.id])
 
     useEffect(() => {
         setSpecifications({
@@ -35,7 +36,7 @@ export default function ProductDetailBottom({product}) {
                 <div className="tab-content">
                     <Description description={product.description} />
                     {specifications && <Specification specifications={specifications} />}
-                    <Reviews reviews={reviews} />
+                    <Reviews productId={product.id} reviews={reviews} setReviews={setReviews} />
                 </div>
             </div>
     </div>

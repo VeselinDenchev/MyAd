@@ -108,6 +108,13 @@ h2 {
     border: 1px solid #FF6F61;
 }
 
+.delete-button {
+    color: white;
+    background: red;
+    border: 1px solid #FF6F61;
+    font-weight: bold;
+}
+
 .btn:hover,
 .btn:active,
 .btn:focus {

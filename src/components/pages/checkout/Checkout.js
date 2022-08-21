@@ -20,6 +20,12 @@ export default function Checkout() {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        if (!user.accessToken) {
+           navigate('/login'); 
+        }
+    }, []);
+
     function orderSubmitHandler(event) {
         event.preventDefault();
 

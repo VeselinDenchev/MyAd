@@ -71,6 +71,7 @@ export function ProductProvider({children}) {
 
             case "highestToLowestPrice":
                 sortFunction = (a, b) => b.price - a.price;
+                break;
 
             case "lowestToHighestPrice":
                 sortFunction = (a, b) => a.price - b.price;

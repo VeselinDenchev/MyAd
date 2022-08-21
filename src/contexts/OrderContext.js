@@ -18,7 +18,7 @@ export function OrderProvider({children}) {
                 setOrders(orders.sort((a, b) => (a, b) => new Date(b.createdAtUtc) - new Date(a.createdAtUtc)));
              })
              .catch(error => console.log("Can't fetch orders!"));
-    }, []);
+    }, [user?.accessToken]);
 
     function getOrderById(orderId) {
         const order = [...orders.filter(o => o.id === orderId)][0];
@@ -26,12 +26,32 @@ export function OrderProvider({children}) {
         return order;
     }
 
+    const clearOrders = () => setOrders([]);
+
+    function hasBoughtProduct(productId) {
+        let isInOrders = false;
+
+        orders.forEach(order => {
+            console.log(order);
+            order.cartItems.forEach(cartItem => {
+                if (cartItem.productId === productId) {
+                    isInOrders = true;
+                    return;
+                }
+            });
+        });
+
+        return isInOrders;
+    }
+
     return (
         <OrderContext.Provider 
             value={{
                 orders,
                 setOrders,
-                getOrderById
+                getOrderById,
+                clearOrders,
+                hasBoughtProduct
             }}
         >
             {children}

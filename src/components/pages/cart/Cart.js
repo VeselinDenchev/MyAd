@@ -18,7 +18,7 @@ export default function Cart() {
         if (!user.accessToken) {
            navigate('/login'); 
         }
-    }, [])
+    }, []);
 
     return (
         <div className="cart-page">

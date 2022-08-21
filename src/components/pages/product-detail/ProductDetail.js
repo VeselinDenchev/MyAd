@@ -25,18 +25,7 @@ export default function ProductDetail() {
         if (product) {
             setRelatedProducts([...products.filter(p => p.model.brand.id === product.model.brand.id || p.model.category.id === product.model.category.id)]);
         }
-    }, [product])
-
-
-    // const imagePaths = 
-    // [
-    //     'img/product-1.jpg',
-    //     'img/product-3.jpg',
-    //     'img/product-5.jpg',
-    //     'img/product-7.jpg',
-    //     'img/product-9.jpg',
-    //     'img/product-10.jpg'
-    // ];
+    }, [product]);
 
     const singleSliderSettings = {
         infinite: true,
@@ -46,14 +35,6 @@ export default function ProductDetail() {
         slidesToShow: 1,
         slidesToScroll: 1,
         //asNavFor: '.product-slider-single-nav'
-    };
-    const singleNavSliderSettings = {
-        slidesToShow: 3,
-        slidesToScroll: 1,
-        dots: false,
-        centerMode: true,
-        focusOnSelect: true,
-        //asNavFor: '.product-slider-single'
     };
 
     const relatedProductsSliderSettings = {
@@ -84,15 +65,6 @@ export default function ProductDetail() {
         ]
     };
 
-    const recentProductImages = 
-    [
-        'img/product-10.jpg',
-        'img/product-8.jpg',
-        'img/product-6.jpg',
-        'img/product-4.jpg',
-        'img/product-2.jpg'
-    ];
-
     return (
         <>
             <div className="product-detail">
@@ -107,11 +79,6 @@ export default function ProductDetail() {
                                             <img key={image} src={image.url} alt="Product Image" />
                                         )}
                                         </Slider>
-                                        {/* <Slider className="product-slider-single-nav normal-slider" {...singleNavSliderSettings}>
-                                        {imagePaths.map(image => 
-                                            <SliderNavImage key={image} imageSource={image} />
-                                        )}
-                                        </Slider> */}
                                     </div>
                                     {product && <ProductContent product={product} />}
                                 </div>
