@@ -2,12 +2,11 @@ import ContactInfoItem from "./footer-widget/contact-info/contact-info-item/Cont
 import SocialMediaItem from "./footer-widget/contact-info/social-media-item/SocialMediaItem";
 import FooterWidget from "./footer-widget/FooterWidget";
 import InfoItem from "./footer-widget/info-item/InfoItem";
-import Payment from "./payment/Payment";
 
 const contactInfoItems = 
 [
-    {iconClassName: 'fa fa-map-marker', contactData: '123 E Store, Los Angeles, USA'},
-    {iconClassName: 'fa fa-envelope', contactData: 'email@example.com'},
+    {iconClassName: 'fa fa-map-marker', contactData: '3528 Pooz Street, Freehold, New Jersey, USA'},
+    {iconClassName: 'fa fa-envelope', contactData: 'pcdealer@email.com'},
     {iconClassName: 'fa fa-phone', contactData: '+123-456-7890'}
 ];
 

@@ -16,6 +16,8 @@ export default function ProductDetail() {
 
     const [relatedProducts, setRelatedProducts] = useState([]);
 
+    const [reviews, setReviews] = useState([]);
+
     useEffect(() => {
         setProductId(productId);
         window. scrollTo(0, 0);

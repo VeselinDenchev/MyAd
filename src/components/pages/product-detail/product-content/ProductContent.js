@@ -7,8 +7,9 @@ import Quantity from "../../../product/quantity/Quantity";
 import Size from "./size/Size";
 import { CartContext } from "../../../../contexts/CartContext";
 
-export default function ProductContent({product}) {
+export default function ProductContent({product, reviews}) {
     const { addToCart } = useContext(CartContext);
+
 
     const [quantity, setQuantity] = useState('1');
 
