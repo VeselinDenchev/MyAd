@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# PCDealer
+<hr/>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<h2>ReactJS SoftUni Course Project</h2>
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<b>PCDealer</b> is an online computers e-shop app. It consists of the following pages:
+<ul>
+    <li><b>Cart</b></li>
+    Еvery logged-in user can see what products has he added to cart and (change) their quantities, the sub total and the shipping cost.
+    <li><b>Checkout</b></li>
+    Here logged-in user can choose whether to use his registration data as the order data or fill a custom one.
+    <li><b>Home</b></li>
+    This page consist of a sidebar with the product categories on the left side, a slider with images in the middle and two images which contain hyperlinks to <i>Gaming Laptops</i> and <i>Business Laptop</i> categories. Under them is placed a full-width slider with different computer brands.
+    <li><b>Login</b></li>
+    It consists of box with two input fields in it: <i>E-mail / Username</i> and <i>Password</i> and a <i>Login</i> button. If user enters the correct data he has registered with he will be logged-in and redirected to the <i>Home</i> page, else an error text is displayed.
+    <li<b>Order view</b></li>
+    It displays detailed data about an order a user has made.
+    <li><b>Orders</b></li>
+    Every logged-in user can access this page and see his order history including the date and time and the status of the orders. By clicking the <i>View</i> button on an order he is navigated to the corresponding <i>Order view</i> page.
+    <li><b>Product details</b></li>
+    Constains full data about a product: name, rating, price, images slider, description, specification and reviews. Here user can change the desired quantity he wants to buy. On the right side is placed a sidebar with two sections: <i>Categories</i> and <i>Brands</i>. There user can be navigated to the <i>Products</i> page with applied category or brand filter.
+    <li><b>Products</b></li>
+    This is products' catalog page. On the top there is a search bar which filters products on every character typed. Products can be sorted by different criterias: name, rating, newest, price. In addition to name (by typing a text in the search bar), products can be filtered by different price ranges, categories and brands. The catalog has paging: on every page there are six products displayed.
+    <li><b>Register</b></li>
+    Here non-logged-in user can make an account to the app. He needs to fill the following data: first name, last name, email, phone number, address, password and confirm password (type the same text as in the <i>Password</i> input). In real time user gets notified if the email he is typing is already used and if so the <i>Register</i> button gets disabled.
+</ul>
+Every existing page has the header and the footer in it.
+<ul>
+    <li><b>Header</b></li>
+    It contains navigation bar which contains links to <i>Home</i> and <i>Products</i> pages, on the rightmost is the authentication navigation dropdown menu which changes depending if user is logged-in or not and under them is site image on the left and the cart icon with the counter inside it. If user is logged in the auth nav menu text is the his username, otherwise is <i>Login/Register</i>. This menu's dropdown options also change: if user is logged-in it constains <i>Orders</i> (which navigates user to the corresponding page) and <i>Logout</i>, else the options are <i>Login</i> and <i>Register</i> which, as you can guess, navigate to the corresponding page. Adding products to cart changes the number in the cart button if they aren't already in the cart, otherwise their quantity gets incremented. If you are logged-in clicking this button will navigate you to the <i>Cart</i> page, else user will be redirected do the <i>Login</i> page.
+    <li><b>Footer</b></li>
+    It constains different sections with links:
+    <ul>
+        <li>Get in Touch</li>
+        Contains different contact information.
+        <li>Follow Us</li>
+        Contains social media icons links.
+        <li>Company Info</li>
+        Contains links to pages (non-existing) with information about the company.
+        <li>Purchase info</li>
+        Contains links to policy pages (non-existing) with information about the purchase process.
+    </ul>
+</ul>
